@@ -1,0 +1,683 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-media-query/iron-media-query.html">
+
+<!--
+Responsive grid.
+
+Example:
+
+    <lavu-grid></lavu-grid>
+
+@group Seed Elements
+@element lavu-grid
+@demo demo/index.html
+@hero hero.svg
+-->
+<dom-module id="lavu-grid">
+
+  <style>
+    :root {
+      --grid-xs-columns: 4;
+      --grid-xs-gutter: var(--grid-lg-gutter);
+      --grid-xs-margin: var(--grid-lg-margin);
+
+      --grid-sm-columns: 8;
+      --grid-sm-gutter: var(--grid-lg-gutter);
+      --grid-sm-margin: var(--grid-lg-margin);
+
+      --grid-md-columns: 12;
+      --grid-md-gutter: var(--grid-lg-gutter);
+      --grid-md-margin: var(--grid-lg-gutter);
+
+      --grid-lg-columns: 16;
+      --grid-lg-gutter: 4px;
+      --grid-lg-margin: 4px;
+
+      --grid-cell-default-columns: var(--grid-xs-columns);
+    }
+
+    :host {
+      box-sizing: border-box;
+
+      -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+
+      margin: 0 auto 0 auto;
+
+      -webkit-box-align: stretch;
+      -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+      align-items: stretch;
+
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+
+      /* Fixes for IE 10
+      display: -webkit-box !important;
+      display: -webkit-flex !important;
+      display: -ms-flexbox !important;
+      display: flex !important;
+      */
+    }
+
+    /* Strange stuff: I don't know why Polymer adds the "lavu-grid-0" class  */
+    /* Without this class in the selector, I must use !important on padding */
+    :host([no-spacing]) {
+      padding: 0 !important;  /* TODO: How to avoid !important ?? */
+    }
+    :host([no-spacing]) ::content > lavu-grid-cell {
+      margin: 0 !important;   /* TODO: How to avoid !important ?? */
+    }
+
+    :host ::content lavu-grid-cell {
+      box-sizing: border-box;
+    }
+
+    /* Extra small devices, Phones */
+    /* Not possible to use css variables in @media queries e.g: */
+    /* @media only screen and (max-width: var(--grid-tablet-breakpoint)) */
+    /* No polyfill implemented for this: @custom-media --phone-window (max-width: 479px); */
+    /* Use iron-media-query and a CSS-class for each breakpoint */
+
+    :host(.screen-xs) {
+      padding: calc(var(--grid-xs-margin) - var(--grid-xs-gutter) / 2);
+    }
+    :host(.screen-xs) ::content > lavu-grid-cell {
+      margin: calc(var(--grid-xs-gutter) / 2 );
+      width: calc(var(--grid-cell-default-columns) / var(--grid-xs-columns) * 100% - var(--grid-xs-gutter));
+    }
+    :host(.screen-xs[no-spacing]) ::content > lavu-grid-cell {
+      width: calc((var(--grid-cell-default-columns) / var(--grid-xs-columns)) * 100%);
+    }
+    :host(.screen-xs) ::content > listPoller[hide-xs] {
+      display: none !important;
+    }
+    :host(.screen-xs) ::content > [span='1'],
+    :host(.screen-xs) ::content > [span-xs='1'][span-xs='1'] {
+      width: calc(1 / var(--grid-xs-columns) * 100% - var(--grid-xs-gutter));
+    }
+    :host(.screen-xs[no-spacing]) ::content > [span='1'],
+    :host(.screen-xs[no-spacing]) ::content > [span-xs='1'][span-xs='1'] {
+      width: calc(1 / var(--grid-xs-columns) * 100%);
+    }
+    :host(.screen-xs) ::content > [span='2'],
+    :host(.screen-xs) ::content > [span-xs='2'][span-xs='2'] {
+      width: calc(2 / var(--grid-xs-columns) * 100% - var(--grid-xs-gutter));
+    }
+    :host(.screen-xs[no-spacing]) ::content > [span='2'],
+    :host(.screen-xs[no-spacing]) ::content > [span-xs='2'][span-xs='2'] {
+      width: calc(2 / var(--grid-xs-columns) * 100%);
+    }
+    :host(.screen-xs) ::content > [span='3'],
+    :host(.screen-xs) ::content > [span-xs='3'][span-xs='3'] {
+      width: calc(3 / var(--grid-xs-columns) * 100% - var(--grid-xs-gutter));
+    }
+    :host(.screen-xs[no-spacing]) ::content > [span='3'],
+    :host(.screen-xs[no-spacing]) ::content > [span-xs='3'][span-xs='3'] {
+      width: calc(3 / var(--grid-xs-columns) * 100%);
+    }
+    :host(.screen-xs) ::content > [span='4'],
+    :host(.screen-xs) ::content > [span-xs='4'][span-xs='4'] {
+      width: calc(4 / var(--grid-xs-columns) * 100% - var(--grid-xs-gutter));
+    }
+    :host(.screen-xs[no-spacing]) ::content > [span='4'],
+    :host(.screen-xs[no-spacing]) ::content > [span-xs='4'][span-xs='4'] {
+      width: calc(4 / var(--grid-xs-columns) * 100%);
+    }
+    :host(.screen-xs) ::content > [span='5'],
+    :host(.screen-xs) ::content > [span-xs='5'][span-xs='5'],
+    :host(.screen-xs) ::content > [span='6'],
+    :host(.screen-xs) ::content > [span-xs='6'][span-xs='6'],
+    :host(.screen-xs) ::content > [span='7'],
+    :host(.screen-xs) ::content > [span-xs='7'][span-xs='7'],
+    :host(.screen-xs) ::content > [span='8'],
+    :host(.screen-xs) ::content > [span-xs='8'][span-xs='8'],
+    :host(.screen-xs) ::content > [span='9'],
+    :host(.screen-xs) ::content > [span-xs='9'][span-xs='9'],
+    :host(.screen-xs) ::content > [span='10'],
+    :host(.screen-xs) ::content > [span-xs='10'][span-xs='10'],
+    :host(.screen-xs) ::content > [span='11'],
+    :host(.screen-xs) ::content > [span-xs='11'][span-xs='11'],
+    :host(.screen-xs) ::content > [span='12'],
+    :host(.screen-xs) ::content > [span-xs='12'][span-xs='12'],
+    :host(.screen-xs) ::content > [span='13'],
+    :host(.screen-xs) ::content > [span-xs='13'][span-xs='13'],
+    :host(.screen-xs) ::content > [span='14'],
+    :host(.screen-xs) ::content > [span-xs='14'][span-xs='14'],
+    :host(.screen-xs) ::content > [span='15'],
+    :host(.screen-xs) ::content > [span-xs='15'][span-xs='15'],
+    :host(.screen-xs) ::content > [span='16'],
+    :host(.screen-xs) ::content > [span-xs='16'][span-xs='16'] {
+      width: calc(4 / var(--grid-xs-columns) * 100% - var(--grid-xs-gutter));
+    }
+    :host(.screen-xs[no-spacing]) ::content > [span='5'],
+    :host(.screen-xs[no-spacing]) ::content > [span-xs='5'][span-xs='5'],
+    :host(.screen-xs[no-spacing]) ::content > [span='6'],
+    :host(.screen-xs[no-spacing]) ::content > [span-xs='6'][span-xs='6'],
+    :host(.screen-xs[no-spacing]) ::content > [span='7'],
+    :host(.screen-xs[no-spacing]) ::content > [span-xs='7'][span-xs='7'],
+    :host(.screen-xs[no-spacing]) ::content > [span='8'],
+    :host(.screen-xs[no-spacing]) ::content > [span-xs='8'][span-xs='8'],
+    :host(.screen-xs[no-spacing]) ::content > [span='9'],
+    :host(.screen-xs[no-spacing]) ::content > [span-xs='9'][span-xs='9'],
+    :host(.screen-xs[no-spacing]) ::content > [span='10'],
+    :host(.screen-xs[no-spacing]) ::content > [span-xs='10'][span-xs='10'],
+    :host(.screen-xs[no-spacing]) ::content > [span='11'],
+    :host(.screen-xs[no-spacing]) ::content > [span-xs='11'][span-xs='11'],
+    :host(.screen-xs[no-spacing]) ::content > [span='12'],
+    :host(.screen-xs[no-spacing]) ::content > [span-xs='12'][span-xs='12'],
+    :host(.screen-xs[no-spacing]) ::content > [span='13'],
+    :host(.screen-xs[no-spacing]) ::content > [span-xs='13'][span-xs='13'],
+    :host(.screen-xs[no-spacing]) ::content > [span='14'],
+    :host(.screen-xs[no-spacing]) ::content > [span-xs='14'][span-xs='14'],
+    :host(.screen-xs[no-spacing]) ::content > [span='15'],
+    :host(.screen-xs[no-spacing]) ::content > [span-xs='15'][span-xs='15'],
+    :host(.screen-xs[no-spacing]) ::content > [span='16'],
+    :host(.screen-xs[no-spacing]) ::content > [span-xs='16'][span-xs='16'] {
+      width: calc(4 / var(--grid-xs-columns) * 100%);
+    }
+
+    /* Small devices, Tablets */
+    :host(.screen-sm) {
+      padding: calc(var(--grid-md-margin) - var(--grid-md-gutter) / 2);
+    }
+    :host(.screen-sm) ::content > lavu-grid-cell {
+      margin: calc(var(--grid-md-gutter) / 2 );
+      width: calc(var(--grid-cell-default-columns) / var(--grid-sm-columns) * 100% - var(--grid-sm-gutter));
+    }
+    :host(.screen-sm[no-spacing]) ::content > lavu-grid-cell {
+      width: calc((var(--grid-cell-default-columns) / var(--grid-sm-columns)) * 100%);
+    }
+    :host(.screen-sm) ::content > lavu-grid-cell[hide-sm] {
+      display: none !important;
+    }
+    :host(.screen-sm) ::content > [span='1'],
+    :host(.screen-sm) ::content > [span-sm='1'][span-sm='1'] {
+      width: calc(1 / var(--grid-sm-columns) * 100% - var(--grid-sm-gutter));
+    }
+    :host(.screen-sm[no-spacing]) ::content > [span='1'],
+    :host(.screen-sm[no-spacing]) ::content > [span-sm='1'][span-sm='1'] {
+      width: calc(1 / var(--grid-sm-columns) * 100%);
+    }
+    :host(.screen-sm) ::content > [span='2'],
+    :host(.screen-sm) ::content > [span-sm='2'][span-sm='2'] {
+      width: calc(2 / var(--grid-sm-columns) * 100% - var(--grid-sm-gutter));
+    }
+    :host(.screen-sm[no-spacing]) ::content > [span='2'],
+    :host(.screen-sm[no-spacing]) ::content > [span-sm='2'][span-sm='2'] {
+      width: calc(2 / var(--grid-sm-columns) * 100%);
+    }
+    :host(.screen-sm) ::content > [span='3'],
+    :host(.screen-sm) ::content > [span-sm='3'][span-sm='3'] {
+      width: calc(3 / var(--grid-sm-columns) * 100% - var(--grid-sm-gutter));
+    }
+    :host(.screen-sm[no-spacing]) ::content > [span='3'],
+    :host(.screen-sm[no-spacing]) ::content > [span-sm='3'][span-sm='3'] {
+      width: calc(3 / var(--grid-sm-columns) * 100%);
+    }
+    :host(.screen-sm) ::content > [span='4'],
+    :host(.screen-sm) ::content > [span-sm='4'][span-sm='4'] {
+      width: calc(4 / var(--grid-sm-columns) * 100% - var(--grid-sm-gutter));
+    }
+    :host(.screen-sm[no-spacing]) ::content > [span='4'],
+    :host(.screen-sm[no-spacing]) ::content > [span-sm='4'][span-sm='4'] {
+      width: calc(4 / var(--grid-sm-columns) * 100%);
+    }
+    :host(.screen-sm) ::content > [span='5'],
+    :host(.screen-sm) ::content > [span-sm='5'][span-sm='5'] {
+      width: calc(5 / var(--grid-sm-columns) * 100% - var(--grid-sm-gutter));
+    }
+    :host(.screen-sm[no-spacing]) ::content > [span='5'],
+    :host(.screen-sm[no-spacing]) ::content > [span-sm='5'][span-sm='5'] {
+      width: calc(5 / var(--grid-sm-columns) * 100%);
+    }
+    :host(.screen-sm) ::content > [span='6'],
+    :host(.screen-sm) ::content > [span-sm='6'][span-sm='6'] {
+      width: calc(6 / var(--grid-sm-columns) * 100% - var(--grid-sm-gutter));
+    }
+    :host(.screen-sm[no-spacing]) ::content > [span='6'],
+    :host(.screen-sm[no-spacing]) ::content > [span-sm='6'][span-sm='6'] {
+      width: calc(6 / var(--grid-sm-columns) * 100%);
+    }
+    :host(.screen-sm) ::content > [span='7'],
+    :host(.screen-sm) ::content > [span-sm='7'][span-sm='7'] {
+      width: calc(7 / var(--grid-sm-columns) * 100% - var(--grid-sm-gutter));
+    }
+    :host(.screen-sm[no-spacing]) ::content > [span='7'],
+    :host(.screen-sm[no-spacing]) ::content > [span-sm='7'][span-sm='7'] {
+      width: calc(7 / var(--grid-sm-columns) * 100%);
+    }
+    :host(.screen-sm) ::content > [span='8'],
+    :host(.screen-sm) ::content > [span-sm='8'][span-sm='8'] {
+      width: calc(8 / var(--grid-sm-columns) * 100% - var(--grid-sm-gutter));
+    }
+    :host(.screen-sm[no-spacing]) ::content > [span='8'],
+    :host(.screen-sm[no-spacing]) ::content > [span-sm='8'][span-sm='8'] {
+      width: calc(8 / var(--grid-sm-columns) * 100%);
+    }
+    :host(.screen-sm) ::content > [span='9'],
+    :host(.screen-sm) ::content > [span-sm='9'][span-sm='9'],
+    :host(.screen-sm) ::content > [span='10'],
+    :host(.screen-sm) ::content > [span-sm='10'][span-sm='10'],
+    :host(.screen-sm) ::content > [span='11'],
+    :host(.screen-sm) ::content > [span-sm='11'][span-sm='11'],
+    :host(.screen-sm) ::content > [span='12'],
+    :host(.screen-sm) ::content > [span-sm='12'][span-sm='12'],
+    :host(.screen-sm) ::content > [span='13'],
+    :host(.screen-sm) ::content > [span-sm='13'][span-sm='13'],
+    :host(.screen-sm) ::content > [span='14'],
+    :host(.screen-sm) ::content > [span-sm='14'][span-sm='14'],
+    :host(.screen-sm) ::content > [span='15'],
+    :host(.screen-sm) ::content > [span-sm='15'][span-sm='15'],
+    :host(.screen-sm) ::content > [span='16'],
+    :host(.screen-sm) ::content > [span-sm='16'][span-sm='16'] {
+      width: calc(8 / var(--grid-sm-columns) * 100% - var(--grid-sm-gutter));
+    }
+    :host(.screen-sm[no-spacing]) ::content > [span='9'],
+    :host(.screen-sm[no-spacing]) ::content > [span-sm='9'][span-sm='9'],
+    :host(.screen-sm[no-spacing]) ::content > [span='10'],
+    :host(.screen-sm[no-spacing]) ::content > [span-sm='10'][span-sm='10'],
+    :host(.screen-sm[no-spacing]) ::content > [span='11'],
+    :host(.screen-sm[no-spacing]) ::content > [span-sm='11'][span-sm='11'],
+    :host(.screen-sm[no-spacing]) ::content > [span='12'],
+    :host(.screen-sm[no-spacing]) ::content > [span-sm='12'][span-sm='12'],
+    :host(.screen-sm[no-spacing]) ::content > [span='13'],
+    :host(.screen-sm[no-spacing]) ::content > [span-sm='13'][span-sm='13'],
+    :host(.screen-sm[no-spacing]) ::content > [span='14'],
+    :host(.screen-sm[no-spacing]) ::content > [span-sm='14'][span-sm='14'],
+    :host(.screen-sm[no-spacing]) ::content > [span='15'],
+    :host(.screen-sm[no-spacing]) ::content > [span-sm='15'][span-sm='15'],
+    :host(.screen-sm[no-spacing]) ::content > [span='16'],
+    :host(.screen-sm[no-spacing]) ::content > [span-sm='16'][span-sm='16'] {
+      width: calc(8 / var(--grid-sm-columns) * 100%);
+    }
+
+    /* Medium devices, Desktops */
+    :host(.screen-md) {
+      padding: calc(var(--grid-md-margin) - var(--grid-md-gutter) / 2);
+    }
+    :host(.screen-md) ::content > lavu-grid-cell {
+      margin: calc(var(--grid-md-gutter) / 2 );
+      width: calc(var(--grid-cell-default-columns) / var(--grid-md-columns) * 100% - var(--grid-md-gutter));
+    }
+    :host(.screen-md[no-spacing]) ::content > lavu-grid-cell {
+      width: calc((var(--grid-cell-default-columns) / var(--grid-md-columns)) * 100%);
+    }
+    :host(.screen-md) ::content > lavu-grid-cell[hide-md] {
+      display: none !important;
+    }
+    :host(.screen-md) ::content > [span='1'],
+    :host(.screen-md) ::content > [span-md='1'][span-md='1'] {
+      width: calc(1 / var(--grid-md-columns) * 100% - var(--grid-md-gutter));
+    }
+    :host(.screen-md[no-spacing]) ::content > [span='1'],
+    :host(.screen-md[no-spacing]) ::content > [span-md='1'][span-md='1'] {
+      width: calc(1 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [span='2'],
+    :host(.screen-md) ::content > [span-md='2'][span-md='2'] {
+      width: calc(2 / var(--grid-md-columns) * 100% - var(--grid-md-gutter));
+    }
+    :host(.screen-md[no-spacing]) ::content > [span='2'],
+    :host(.screen-md[no-spacing]) ::content > [span-md='2'][span-md='2'] {
+      width: calc(2 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [span='3'],
+    :host(.screen-md) ::content > [span-md='3'][span-md='3'] {
+      width: calc(3 / var(--grid-md-columns) * 100% - var(--grid-md-gutter));
+    }
+    :host(.screen-md[no-spacing]) ::content > [span='3'],
+    :host(.screen-md[no-spacing]) ::content > [span-md='3'][span-md='3'] {
+      width: calc(3 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [span='4'],
+    :host(.screen-md) ::content > [span-md='4'][span-md='4'] {
+      width: calc(4 / var(--grid-md-columns) * 100% - var(--grid-md-gutter));
+    }
+    :host(.screen-md[no-spacing]) ::content > [span='4'],
+    :host(.screen-md[no-spacing]) ::content > [span-md='4'][span-md='4'] {
+      width: calc(4 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [span='5'],
+    :host(.screen-md) ::content > [span-md='5'][span-md='5'] {
+      width: calc(5 / var(--grid-md-columns) * 100% - var(--grid-md-gutter));
+    }
+    :host(.screen-md[no-spacing]) ::content > [span='5'],
+    :host(.screen-md[no-spacing]) ::content > [span-md='5'][span-md='5'] {
+      width: calc(5 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [span='6'],
+    :host(.screen-md) ::content > [span-md='6'][span-md='6'] {
+      width: calc(6 / var(--grid-md-columns) * 100% - var(--grid-md-gutter));
+    }
+    :host(.screen-md[no-spacing]) ::content > [span='6'],
+    :host(.screen-md[no-spacing]) ::content > [span-md='6'][span-md='6'] {
+      width: calc(6 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [span='7'],
+    :host(.screen-md) ::content > [span-md='7'][span-md='7'] {
+      width: calc(7 / var(--grid-md-columns) * 100% - var(--grid-md-gutter));
+    }
+    :host(.screen-md[no-spacing]) ::content > [span='7'],
+    :host(.screen-md[no-spacing]) ::content > [span-md='7'][span-md='7'] {
+      width: calc(7 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [span='8'],
+    :host(.screen-md) ::content > [span-md='8'][span-md='8'] {
+      width: calc(8 / var(--grid-md-columns) * 100% - var(--grid-md-gutter));
+    }
+    :host(.screen-md[no-spacing]) ::content > [span='8'],
+    :host(.screen-md[no-spacing]) ::content > [span-md='8'][span-md='8'] {
+      width: calc(8 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [span='9'],
+    :host(.screen-md) ::content > [span-md='9'][span-md='9'] {
+      width: calc(9 / var(--grid-md-columns) * 100% - var(--grid-md-gutter));
+    }
+    :host(.screen-md[no-spacing]) ::content > [span='9'],
+    :host(.screen-md[no-spacing]) ::content > [span-md='9'][span-md='9'] {
+      width: calc(9 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [span='10'],
+    :host(.screen-md) ::content > [span-md='10'][span-md='10'] {
+      width: calc(10 / var(--grid-md-columns) * 100% - var(--grid-md-gutter));
+    }
+    :host(.screen-md[no-spacing]) ::content > [span='10'],
+    :host(.screen-md[no-spacing]) ::content > [span-md='10'][span-md='10'] {
+      width: calc(10 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [span='11'],
+    :host(.screen-md) ::content > [span-md='11'][span-md='11'] {
+      width: calc(11 / var(--grid-md-columns) * 100% - var(--grid-md-gutter));
+    }
+    :host(.screen-md[no-spacing]) ::content > [span='11'],
+    :host(.screen-md[no-spacing]) ::content > [span-md='11'][span-md='11'] {
+      width: calc(11 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [span='12'],
+    :host(.screen-md) ::content > [span-md='12'][span-md='12'] {
+      width: calc(12 / var(--grid-md-columns) * 100% - var(--grid-md-gutter));
+    }
+    :host(.screen-md[no-spacing]) ::content > [span='12'],
+    :host(.screen-md[no-spacing]) ::content > [span-md='12'][span-md='12'] {
+      width: calc(12 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [span='13'],
+    :host(.screen-md) ::content > [span-md='13'][span-md='13'],
+    :host(.screen-md) ::content > [span='14'],
+    :host(.screen-md) ::content > [span-md='14'][span-md='14'],
+    :host(.screen-md) ::content > [span='15'],
+    :host(.screen-md) ::content > [span-md='15'][span-md='15'],
+    :host(.screen-md) ::content > [span='16'],
+    :host(.screen-md) ::content > [span-md='16'][span-md='16'] {
+      width: calc(12 / var(--grid-md-columns) * 100% - var(--grid-md-gutter));
+    }
+    :host(.screen-md[no-spacing]) ::content > [span='13'],
+    :host(.screen-md[no-spacing]) ::content > [span-md='13'][span-md='13'],
+    :host(.screen-md[no-spacing]) ::content > [span='14'],
+    :host(.screen-md[no-spacing]) ::content > [span-md='14'][span-md='14'],
+    :host(.screen-md[no-spacing]) ::content > [span='15'],
+    :host(.screen-md[no-spacing]) ::content > [span-md='15'][span-md='15'],
+    :host(.screen-md[no-spacing]) ::content > [span='16'],
+    :host(.screen-md[no-spacing]) ::content > [span-md='16'][span-md='16'] {
+      width: calc(12 / var(--grid-md-columns) * 100%);
+    }
+
+    /* Large devices, Desktops */
+    :host(.screen-lg) {
+      padding: calc(var(--grid-lg-margin) - var(--grid-lg-gutter) / 2);
+    }
+    :host(.screen-lg) ::content > lavu-grid-cell {
+      margin: calc(var(--grid-lg-gutter) / 2 );
+      width: calc(var(--grid-cell-default-columns) / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
+    }
+    :host(.screen-lg[no-spacing]) ::content > lavu-grid-cell {
+      width: calc((var(--grid-cell-default-columns) / var(--grid-lg-columns)) * 100%);
+    }
+    :host(.screen-lg) ::content > lavu-grid-cell[hide-lg] {
+      display: none !important;
+    }
+    :host(.screen-lg) ::content > [span='1'],
+    :host(.screen-lg) ::content > [span-lg='1'][span-lg='1'] {
+      width: calc(1 / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
+    }
+    :host(.screen-lg[no-spacing]) ::content > [span='1'],
+    :host(.screen-lg[no-spacing]) ::content > [span-lg='1'][span-lg='1'] {
+      width: calc(1 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [span='2'],
+    :host(.screen-lg) ::content > [span-lg='2'][span-lg='2'] {
+      width: calc(2 / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
+    }
+    :host(.screen-lg[no-spacing]) ::content > [span='2'],
+    :host(.screen-lg[no-spacing]) ::content > [span-lg='2'][span-lg='2'] {
+      width: calc(2 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [span='3'],
+    :host(.screen-lg) ::content > [span-lg='3'][span-lg='3'] {
+      width: calc(3 / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
+    }
+    :host(.screen-lg[no-spacing]) ::content > [span='3'],
+    :host(.screen-lg[no-spacing]) ::content > [span-lg='3'][span-lg='3'] {
+      width: calc(3 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [span='4'],
+    :host(.screen-lg) ::content > [span-lg='4'][span-lg='4'] {
+      width: calc(4 / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
+    }
+    :host(.screen-lg[no-spacing]) ::content > [span='4'],
+    :host(.screen-lg[no-spacing]) ::content > [span-lg='4'][span-lg='4'] {
+      width: calc(4 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [span='5'],
+    :host(.screen-lg) ::content > [span-lg='5'][span-lg='5'] {
+      width: calc(5 / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
+    }
+    :host(.screen-lg[no-spacing]) ::content > [span='5'],
+    :host(.screen-lg[no-spacing]) ::content > [span-lg='5'][span-lg='5'] {
+      width: calc(5 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [span='6'],
+    :host(.screen-lg) ::content > [span-lg='6'][span-lg='6'] {
+      width: calc(6 / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
+    }
+    :host(.screen-lg[no-spacing]) ::content > [span='6'],
+    :host(.screen-lg[no-spacing]) ::content > [span-lg='6'][span-lg='6'] {
+      width: calc(6 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [span='7'],
+    :host(.screen-lg) ::content > [span-lg='7'][span-lg='7'] {
+      width: calc(7 / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
+    }
+    :host(.screen-lg[no-spacing]) ::content > [span='7'],
+    :host(.screen-lg[no-spacing]) ::content > [span-lg='7'][span-lg='7'] {
+      width: calc(7 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [span='8'],
+    :host(.screen-lg) ::content > [span-lg='8'][span-lg='8'] {
+      width: calc(8 / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
+    }
+    :host(.screen-lg[no-spacing]) ::content > [span='8'],
+    :host(.screen-lg[no-spacing]) ::content > [span-lg='8'][span-lg='8'] {
+      width: calc(8 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [span='9'],
+    :host(.screen-lg) ::content > [span-lg='9'][span-lg='9'] {
+      width: calc(9 / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
+    }
+    :host(.screen-lg[no-spacing]) ::content > [span='9'],
+    :host(.screen-lg[no-spacing]) ::content > [span-lg='9'][span-lg='9'] {
+      width: calc(9 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [span='10'],
+    :host(.screen-lg) ::content > [span-lg='10'][span-lg='10'] {
+      width: calc(10 / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
+    }
+    :host(.screen-lg[no-spacing]) ::content > [span='10'],
+    :host(.screen-lg[no-spacing]) ::content > [span-lg='10'][span-lg='10'] {
+      width: calc(10 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [span='11'],
+    :host(.screen-lg) ::content > [span-lg='11'][span-lg='11'] {
+      width: calc(11 / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
+    }
+    :host(.screen-lg[no-spacing]) ::content > [span='11'],
+    :host(.screen-lg[no-spacing]) ::content > [span-lg='11'][span-lg='11'] {
+      width: calc(11 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [span='12'],
+    :host(.screen-lg) ::content > [span-lg='12'][span-lg='12'] {
+      width: calc(12 / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
+    }
+    :host(.screen-lg[no-spacing]) ::content > [span='12'],
+    :host(.screen-lg[no-spacing]) ::content > [span-lg='12'][span-lg='12'] {
+      width: calc(12 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [span='13'],
+    :host(.screen-lg) ::content > [span-lg='13'][span-lg='13'] {
+      width: calc(13 / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
+    }
+    :host(.screen-lg[no-spacing]) ::content > [span='13'],
+    :host(.screen-lg[no-spacing]) ::content > [span-lg='13'][span-lg='13'] {
+      width: calc(13 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [span='14'],
+    :host(.screen-lg) ::content > [span-lg='14'][span-lg='14'] {
+      width: calc(14 / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
+    }
+    :host(.screen-lg[no-spacing]) ::content > [span='14'],
+    :host(.screen-lg[no-spacing]) ::content > [span-lg='14'][span-lg='14'] {
+      width: calc(14 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [span='15'],
+    :host(.screen-lg) ::content > [span-lg='15'][span-lg='15'] {
+      width: calc(15 / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
+    }
+    :host(.screen-lg[no-spacing]) ::content > [span='15'],
+    :host(.screen-lg[no-spacing]) ::content > [span-lg='15'][span-lg='15'] {
+      width: calc(15 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [span='16'],
+    :host(.screen-lg) ::content > [span-lg='16'][span-lg='16'] {
+      width: calc(16 / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
+    }
+    :host(.screen-lg[no-spacing]) ::content > [span='16'],
+    :host(.screen-lg[no-spacing]) ::content > [span-lg='16'][span-lg='16'] {
+      width: calc(16 / var(--grid-lg-columns) * 100%);
+    }
+  </style>
+  <template>
+    <iron-media-query id="q-xs" query="{{queryXs}}" query-matches="{{_isXs}}"></iron-media-query>
+    <iron-media-query id="q-sm" query="{{querySm}}" query-matches="{{_isSm}}"></iron-media-query>
+    <iron-media-query id="q-md" query="{{queryMd}}" query-matches="{{_isMd}}"></iron-media-query>
+    <iron-media-query id="q-lg" query="{{queryLg}}" query-matches="{{_isLg}}"></iron-media-query>
+
+    <content select="lavu-grid-cell"></content>
+  </template>
+
+  <script>
+  (function() {
+    Polymer({
+      is: 'lavu-grid',
+
+      properties: {
+        mediaQueries: {
+          type: Object,
+          value: function() {
+            return {
+              queryXs: '(max-width:479px)',
+              querySm: '(min-width:480px) and (max-width:799px)',
+              queryMd: '(min-width:800px) and (max-width:1023px)',
+              queryLg: '(min-width:1024px)'
+
+              // http://stackoverflow.com/questions/16443380/common-css-media-queries-break-points
+              //@media only screen and (min-width : 320px) and (max-width : 480px) {/*--- Mobile portrait ---*/}
+              //@media only screen and (min-width : 480px) and (max-width : 595px) {/*--- Mobile landscape ---*/}
+              //@media only screen and (min-width : 595px) and (max-width : 690px) {/*--- Small tablet portrait ---*/}
+              //@media only screen and (min-width : 690px) and (max-width : 800px) {/*--- Tablet portrait ---*/}
+              //@media only screen and (min-width : 800px) and (max-width : 1024px) {/*--- Small tablet landscape ---*/}
+              //@media only screen and (min-width : 1024px) and (max-width : 1224px) {/*--- Tablet landscape --- */}
+
+              // Twitter Bootstrap
+              //@media (max-width: 768px) { ... }
+              //@media (min-width: 769px) and (max-width: 991px) { ... }
+              //@media (min-width: 992px) and (max-width: 1199px) { ... }
+              //@media (min-width: 1200px) { ... }
+            }
+          },
+          observer: '_onMediaQueriesChanged'
+        },
+        queryXs: {
+          type: String
+        },
+        querySm: {
+          type: String
+        },
+        queryMd: {
+          type: String
+        },
+        queryLg: {
+          type: String
+        },
+        _screenClass: {
+          type: String
+        }
+      },
+
+      observers: [
+        '_onQueryMatchesChanged(_isXs, _isSm, _isMd, _isLg)'
+      ],
+
+      _onMediaQueriesChanged: function(newValue) {
+        this.async(function() {
+          this.queryXs = newValue.queryXs;
+          this.querySm = newValue.querySm;
+          this.queryMd = newValue.queryMd;
+          this.queryLg = newValue.queryLg;
+        });
+      },
+
+      _onQueryMatchesChanged: function(isXs, isSm, isMd, isLg) {
+        var newScreenClass = isXs ? "screen-xs" : isSm ? "screen-sm" : isMd ? "screen-md" : isLg ? "screen-lg" : null;
+
+        if(newScreenClass && newScreenClass !== this._screenClass) {
+          this._screenClass = newScreenClass;
+          var mediaQuery  = isXs ? this.queryXs : isSm ? this.querySm : isMd ? this.queryMd : this.queryLg;
+
+          this.async(function() {
+            this.classList.remove("screen-xs", "screen-sm", "screen-md", "screen-lg");
+            this.classList.add(newScreenClass);
+            this.fire('media-query-changed', {screenClass: newScreenClass, mediaQuery: mediaQuery});
+          }, 100);
+        }
+      }
+    });
+  })();
+  </script>
+</dom-module>
+
+<dom-module id="lavu-grid-cell">
+  <template>
+    <content></content>
+  </template>
+  <script>
+    (function() {
+      Polymer({
+        is: 'lavu-grid-cell'
+      });
+    })();
+  </script>
+</dom-module>
+

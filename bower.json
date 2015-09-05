@@ -1,0 +1,36 @@
+{
+  "name": "lavu-grid",
+  "version": "0.0.1",
+  "authors": [
+    "Leif Olsen <leif.o.olsen@gmail.com>"
+  ],
+  "description": "Responsive grid.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "seed",
+    "grid"
+  ],
+  "main": "lavu-grid.html",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/leifoolsen/lavu-grid"
+  },
+  "license": "Apache License 2.0",
+  "homepage": "https://github.com/leifoolsen/lavu-grid/",
+  "ignore": [
+    "/.*",
+    "/node_modules/",
+    "/bower_components/",
+    "/test/"
+  ],
+  "dependencies": {
+    "iron-media-query": "PolymerElements/iron-media-query#~1.0.2",
+    "polymer": "Polymer/polymer#^1.0.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*"
+  }
+}
