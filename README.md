@@ -1,8 +1,8 @@
 # lavu-grid
 
-Polymer 1.x Responsive Grid.
+A Polymer 1.x Responsive Grid based on Material Design [Grid lists](http://www.google.com/design/spec/components/grid-lists.html)
 
-`lavu-grid` is based on CSS from [Material Design Lite](https://github.com/google/material-design-lite) [grid](https://github.com/google/material-design-lite/tree/master/src/grid) - so most of this documentaion is copy pasted from that site.
+The CSS from [Material Design Lite grid](https://github.com/google/material-design-lite/tree/master/src/grid) is used as a base, so most of this documentaion is copy pasted from that URL.
 
 ## Introduction
 The `lavu-grid` **grid** component is a simplified method for laying out content for multiple screen sizes. It reduces the usual coding burden required to correctly display blocks of content in a variety of display conditions.
