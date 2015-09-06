@@ -9,22 +9,130 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <title>lavu-grid Demo</title>
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="../lavu-grid.html">
-  </head>
-  <body unresolved>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>lavu-grid Demo</title>
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../../paper-styles/paper-styles.html">
+  <link rel="import" href="../lavu-grid.html">
 
-    <p>An example of <code>&lt;lavu-grid&gt;</code>:</p>
+  <link rel="stylesheet" href="../../paper-styles/demo.css">
 
-    <button>Say Something</button>
+  <style is="custom-style">
 
-    <lavu-grid>
-      <h2>Hello lavu-grid</h2>
-    </lavu-grid>
+    lavu-grid-cell.red,
+    lavu-grid-cell.yellow,
+    lavu-grid-cell.green,
+    lavu-grid-cell.blue,
+    lavu-grid-cell.cornflower-blue,
+    lavu-grid-cell.dark-gray,
+    lavu-grid-cell.dark-magenta,
+    lavu-grid-cell.golden-rod,
+    lavu-grid-cell.dark-orchid,
+    lavu-grid-cell.fuchsia,
+    lavu-grid-cell.medium-orchid,
+    lavu-grid-cell.olive,
+    lavu-grid-cell.turqouise,
+    lavu-grid-cell.teal,
+    lavu-grid-cell.coral,
+    lavu-grid-cell.orange {
+      font-weight: bold;
+      background: transparent;
+      text-align: center;
+      color: #fff;
+    }
+    lavu-grid-cell.red {
+      background-color: red;
+    }
+    lavu-grid-cell.yellow {
+      background-color: gold;
+    }
+    lavu-grid-cell.green {
+      background-color: green;
+    }
+    lavu-grid-cell.blue {
+      background-color: blue;
+    }
+    lavu-grid-cell.cornflower-blue {
+      background-color: cornflowerBlue;
+    }
+    lavu-grid-cell.dark-gray {
+      background-color: darkGray;
+    }
+    lavu-grid-cell.dark-magenta {
+      background-color: darkMagenta;
+    }
+    lavu-grid-cell.golden-rod {
+      background-color: goldenRod;
+    }
+    lavu-grid-cell.dark-orchid {
+      background-color: darkOrchid;
+    }
+    lavu-grid-cell.fuchsia {
+      background-color: fuchsia;
+    }
+    lavu-grid-cell.medium-orchid {
+      background-color: mediumOrchid;
+    }
+    lavu-grid-cell.orange {
+      background-color: orange;
+    }
+    lavu-grid-cell.olive {
+      background-color: olive;
+    }
+    lavu-grid-cell.turqouise {
+      background-color: #AFEEEE;
+    }
+    lavu-grid-cell.teal {
+      background-color: #008080;
+    }
+    lavu-grid-cell.coral {
+      background-color: #F08080;
+    }
+  </style>
 
-  </body>
+</head>
+<body unresolved>
+
+  <p>An example of <code>&lt;lavu-grid&gt;</code>:</p>
+
+  <lavu-grid no-spacing style="margin-bottom: 4px">
+    <lavu-grid-cell span="1" class="red">1</lavu-grid-cell>
+    <lavu-grid-cell span="1" class="yellow">2</lavu-grid-cell>
+    <lavu-grid-cell span="1" class="green">3</lavu-grid-cell>
+    <lavu-grid-cell span="1" class="blue">4</lavu-grid-cell>
+    <lavu-grid-cell span="1" class="cornflower-blue">5</lavu-grid-cell>
+    <lavu-grid-cell span="1" class="dark-gray">6</lavu-grid-cell>
+    <lavu-grid-cell span="1" class="dark-magenta">7</lavu-grid-cell>
+    <lavu-grid-cell span="1" class="golden-rod">8</lavu-grid-cell>
+    <lavu-grid-cell span="1" class="dark-orchid">9</lavu-grid-cell>
+    <lavu-grid-cell span="1" class="fuchsia">10</lavu-grid-cell>
+    <lavu-grid-cell span="1" class="medium-orchid">11</lavu-grid-cell>
+    <lavu-grid-cell span="1" class="orange">12</lavu-grid-cell>
+    <lavu-grid-cell span="1" class="olive">13</lavu-grid-cell>
+    <lavu-grid-cell span="1" class="turqouise">14</lavu-grid-cell>
+    <lavu-grid-cell span="1" class="teal">15</lavu-grid-cell>
+    <lavu-grid-cell span="1" class="coral">16</lavu-grid-cell>
+  </lavu-grid>
+
+  <lavu-grid no-spacing style="margin-bottom: 4px">
+    <lavu-grid-cell span="8" span-md="7" class="coral">8, md7</lavu-grid-cell>
+    <lavu-grid-cell span="4" span-md="5" class="fuchsia">4, md5</lavu-grid-cell>
+    <lavu-grid-cell span="4" span-md="12" class="cornflower-blue">4, md12</lavu-grid-cell>
+  </lavu-grid>
+
+  <lavu-grid>
+    <lavu-grid-cell span="8" span-md="6" span-sm="4" span-xs="2" class="cornflower-blue">8, md6, sm4, xs2</lavu-grid-cell>
+    <lavu-grid-cell span="6" span-md="4" span-sm="3" span-xs="1" class="dark-magenta">6, md4, sm3, xs1</lavu-grid-cell>
+    <lavu-grid-cell span="2" span-md="2" span-sm="1" span-xs="1" class="orange">2, md2, sm1, xs1</lavu-grid-cell>
+  </lavu-grid>
+
+  <lavu-grid>
+    <lavu-grid-cell span="4" span-md="4" span-sm="3" span-xs="3" class="red">4, md4, sm3, xs3</lavu-grid-cell>
+    <lavu-grid-cell span="6" span-md="3" span-sm="3" span-xs="1" class="yellow">6, md3, sm3, xs1</lavu-grid-cell>
+    <lavu-grid-cell span="6" span-md="5" span-sm="2" hide-xs class="green">6, md5, sm2, hide-xs</lavu-grid-cell>
+  </lavu-grid>
+
+</body>
 </html>

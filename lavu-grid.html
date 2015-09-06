@@ -101,7 +101,7 @@ Example:
     :host(.screen-xs[no-spacing]) ::content > lavu-grid-cell {
       width: calc((var(--grid-cell-default-columns) / var(--grid-xs-columns)) * 100%);
     }
-    :host(.screen-xs) ::content > listPoller[hide-xs] {
+    :host(.screen-xs) ::content > [hide-xs] {
       display: none !important;
     }
     :host(.screen-xs) ::content > [span='1'],
@@ -200,7 +200,7 @@ Example:
     :host(.screen-sm[no-spacing]) ::content > lavu-grid-cell {
       width: calc((var(--grid-cell-default-columns) / var(--grid-sm-columns)) * 100%);
     }
-    :host(.screen-sm) ::content > lavu-grid-cell[hide-sm] {
+    :host(.screen-sm) ::content > [hide-sm] {
       display: none !important;
     }
     :host(.screen-sm) ::content > [span='1'],
@@ -315,7 +315,7 @@ Example:
     :host(.screen-md[no-spacing]) ::content > lavu-grid-cell {
       width: calc((var(--grid-cell-default-columns) / var(--grid-md-columns)) * 100%);
     }
-    :host(.screen-md) ::content > lavu-grid-cell[hide-md] {
+    :host(.screen-md) ::content > [hide-md] {
       display: none !important;
     }
     :host(.screen-md) ::content > [span='1'],
@@ -446,7 +446,7 @@ Example:
     :host(.screen-lg[no-spacing]) ::content > lavu-grid-cell {
       width: calc((var(--grid-cell-default-columns) / var(--grid-lg-columns)) * 100%);
     }
-    :host(.screen-lg) ::content > lavu-grid-cell[hide-lg] {
+    :host(.screen-lg) ::content > [hide-lg] {
       display: none !important;
     }
     :host(.screen-lg) ::content > [span='1'],
