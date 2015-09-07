@@ -1,74 +1,84 @@
-# lavu-grid
+# &lt;lavu-grid&gt;
 
 A Polymer 1.x Responsive Grid.
 
 The CSS from [Material Design Lite grid](https://github.com/google/material-design-lite/tree/master/src/grid) is used as a base, so most of this documentaion is copy pasted from that URL.
 
+
 ## Introduction
+
 The `lavu-grid` **grid** component is a simplified method for laying out content for multiple screen sizes. It reduces the usual coding burden required to correctly display blocks of content in a variety of display conditions.
 
-The `lavu-grid` grid is defined and enclosed by a container element. A grid has 14 columns in the large (desktop) screen size, 12 in the medium (desktop) size, 8 in the small (tablet size), and 4 in the extra small (phone) size, each size having predefined margins and gutters. Cells are laid out sequentially in a row, in the order they are defined, with some exceptions:
+A grid has 16 columns in the large (desktop) screen size, 12 in the medium (desktop) size, 8 in the small (tablet size), and 4 in the extra small (phone) size, each size having predefined margins and gutters. Cells are laid out sequentially in a row, in the order they are defined, with some exceptions:
 
 - If a cell doesn't fit in the row in one of the screen sizes, it flows into the following line.
 - If a cell has a specified column size equal to or larger than the number of columns for the current screen size, it takes up the entirety of its row.
 
-You can set a maximum grid width, after which the grid stays centered with padding on either side, by setting its `max-width` CSS property.
+You can set a maximum grid width, after which the grid stays centered with padding on either side, by setting its `max-width` CSS property in `--lavu-grid` cusom property.
 
 
+## Demo and Documentaion
+
+See the component page.
 
 
+## Install
+Install the component using [Bower](http://bower.io/):
 
-## Dependencies
-
-Element dependencies are managed via [Bower](http://bower.io/). You can
-install that via:
-
-    npm install -g bower
-
-Then, go ahead and download the element's dependencies:
-
-    bower install
+```sh
+$ bower install leifoolsen/lavu-grid --save
+```
 
 
-## Playing With Your Element
+## Usage
 
-If you wish to work on your element in isolation, we recommend that you use
-[Polyserve](https://github.com/PolymerLabs/polyserve) to keep your element's
-bower dependencies in line. You can install it via:
+1. Import Custom Element:
 
-    npm install -g polyserve
+```html
+<link rel="import" href="bower_components/lavu-grid/lavu-grid.html">
+```
 
-And you can run it via:
+2. Start using it:
 
-    polyserve
+```html
+<lavu-grid>
+  <lavu-grid-cell span="4" span-md="4" span-sm="3" span-xs="3">4, md4, sm3, xs3</lavu-grid-cell>
+  <lavu-grid-cell span="6" span-md="3" span-sm="3" span-xs="1">6, md3, sm3, xs1</lavu-grid-cell>
+  <lavu-grid-cell span="6" span-md="5" span-sm="2" hide-xs>6, md5, sm2, hide-xs</lavu-grid-cell>
+</lavu-grid>
+```
 
-Once running, you can preview your element at
-`http://localhost:8080/components/lavu-grid/`, where `lavu-grid` is the name of the directory containing it.
+3. Listen to media query changes (optional):
+
+```html
+<mdl-grid on-media-query-changed='_mediaQueryChanged'>
+  ...
+</mdl-grid>
+
+<script>
+  ...
+  _mediaQueryChanged: function(e) {
+    if(this.$$('mdl-grid:first-child') == e.target) {
+      console.log('media-query-changed: ' + e.detail.screenClass + ', ' + e.detail.mediaQuery);
+    }
+  }
+</script>
+
+```
+
+## Styling
+
+The following custom properties and mixins are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--lavu-grid`   | Mixin applied to the grid | `{}`
 
 
-## Testing Your Element
+## API Reference
 
-Simply navigate to the `/test` directory of your element to run its tests. If
-you are using Polyserve: `http://localhost:8080/components/lavu-grid/test/`
 
-### web-component-tester
-
-The tests are compatible with [web-component-tester](https://github.com/Polymer/web-component-tester).
-Install it via:
-
-    npm install -g web-component-tester
-
-Then, you can run your tests on _all_ of your local browsers via:
-
-    wct
-
-#### WCT Tips
-
-`wct -l chrome` will only run tests in chrome.
-
-`wct -p` will keep the browsers alive after test runs (refresh to re-run).
-
-`wct test/some-file.html` will test only the files you specify.
+## Events
 
 
 ## License
