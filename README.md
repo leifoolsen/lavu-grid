@@ -9,12 +9,12 @@ The CSS from [Material Design Lite grid](https://github.com/google/material-desi
 
 The `lavu-grid` **grid** component is a simplified method for laying out content for multiple screen sizes. It reduces the usual coding burden required to correctly display blocks of content in a variety of display conditions.
 
-A grid has 16 columns in the large (desktop) screen size, 12 in the medium (desktop) size, 8 in the small (tablet size), and 4 in the extra small (phone) size, each size having predefined margins and gutters. Cells are laid out sequentially in a row, in the order they are defined, with some exceptions:
+A grid has 16 columns in the large (desktop) screen size, 12 in the medium (desktop) size, 8 in the small (tablet size), and 4 in the extra small (phone) size, each size having predefined margins and gutters set via custom css properties. Cells are laid out sequentially in a row, in the order they are defined, with some exceptions:
 
 - If a cell doesn't fit in the row in one of the screen sizes, it flows into the following line.
 - If a cell has a specified column size equal to or larger than the number of columns for the current screen size, it takes up the entirety of its row.
 
-You can set a maximum grid width, after which the grid stays centered with padding on either side, by setting its `max-width` CSS property in `--lavu-grid` cusom property.
+You can set a maximum grid width, after which the grid stays centered with padding on either side, by setting a `max-width` CSS property in `--lavu-grid` mixin.
 
 
 ## Demo and Documentaion
@@ -67,19 +67,46 @@ $ bower install leifoolsen/lavu-grid --save
 
 ```
 
-## Styling
+## Running locally
+
+### polyserve
+
+```
+$ npm install --global polyserve
+```
+
+```
+$ polyserve
+```
+
+## Reference 
+
+### Styling
 
 The following custom properties and mixins are available for styling:
 
-Custom property | Description | Default
-----------------|-------------|----------
-`--lavu-grid`   | Mixin applied to the grid | `{}`
+Custom property               | Description | Default
+------------------------------|-------------|----------
+`--grid-xs-columns`           | Columns extra small devices (phones) | 4
+`--grid-xs-gutter`            | Gutter extra small devices (phones)  | `--grid-lg-gutter`
+`--grid-xs-margin`            | Margin extra small devices (phones)  | `--grid-lg-margin`
+`--grid-sm-columns`           | Columns small devices (tablets)      | 8;
+`--grid-sm-gutter`            | Gutter small devices (tablets)       | `--grid-lg-gutter`
+`--grid-sm-margin`            | Margin small devices (tablets)       | `--grid-lg-margin`
+`--grid-md-columns`           | Columns medium devices (desktops)    | 12;
+`--grid-md-gutter`            | Gutter medium devices (desktops)     | `--grid-lg-gutter`
+`--grid-md-margin`            | Margin medium devices (desktops)     | `--grid-lg-gutter`
+`--grid-lg-columns`           | Columns large devices (desktops)     | 16;
+`--grid-lg-gutter`            | Gutter large devices (desktops)      | 4px;
+`--grid-lg-margin`            | Margin large devices (desktops)      | 4px;
+`--grid-cell-default-columns` | Default number of columns            | `--grid-xs-columns`
+`--lavu-grid`                 | Mixin applied to the grid            | `{}`
 
 
-## API Reference
+### API Reference
 
 
-## Events
+### Events
 
 
 ## License
