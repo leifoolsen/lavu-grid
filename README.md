@@ -2,7 +2,7 @@
 
 A Polymer 1.x Responsive Grid.
 
-The CSS from [Material Design Lite grid](https://github.com/google/material-design-lite/tree/master/src/grid) is used as a base, so most of this documentaion is copy pasted from that URL.
+The CSS from [Material Design Lite grid](https://github.com/google/material-design-lite/tree/master/src/grid) is used as a base, so most of this documentaion is copy pasted from the the [Material Design Lite](http://www.getmdl.io/index.html) layout [GRID](http://www.getmdl.io/components/index.html#layout-section/grid) section.
 
 
 ## Introduction
@@ -42,11 +42,14 @@ $ bower install leifoolsen/lavu-grid --save
 
 ```html
 <lavu-grid>
-  <lavu-grid-cell span="4" span-md="4" span-sm="3" span-xs="3">4, md4, sm3, xs3</lavu-grid-cell>
-  <lavu-grid-cell span="6" span-md="3" span-sm="3" span-xs="1">6, md3, sm3, xs1</lavu-grid-cell>
-  <lavu-grid-cell span="6" span-md="5" span-sm="2" hide-xs>6, md5, sm2, hide-xs</lavu-grid-cell>
+  <lavu-grid-cell>4</lavu-grid-cell>
+  <lavu-grid-cell>4</lavu-grid-cell>
+  <lavu-grid-cell>4</lavu-grid-cell>
+  <lavu-grid-cell>4</lavu-grid-cell>
 </lavu-grid>
 ```
+
+This example renders a grid with four cells. Each cell spans two columns.
 
 #### Listen to media query changes (optional):
 
@@ -101,12 +104,6 @@ Custom property               | Description | Default
 `--grid-lg-margin`            | Margin large devices (desktops)      | 4px;
 `--grid-cell-default-columns` | Default number of columns            | `--grid-xs-columns`
 `--lavu-grid`                 | Mixin applied to the grid            | `{}`
-
-
-### API Reference
-
-
-### Events
 
 
 ## License
