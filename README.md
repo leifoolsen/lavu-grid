@@ -42,9 +42,15 @@ $ bower install leifoolsen/lavu-grid --save
 
 ```html
 <lavu-grid>
-  <lavu-grid-cell span="4" span-md="4" span-sm="3" span-xs="3">4, md4, sm3, xs3</lavu-grid-cell>
-  <lavu-grid-cell span="6" span-md="3" span-sm="3" span-xs="1">6, md3, sm3, xs1</lavu-grid-cell>
-  <lavu-grid-cell span="6" span-md="5" span-sm="2" hide-xs>6, md5, sm2, hide-xs</lavu-grid-cell>
+  <lavu-grid-cell span="4" span-md="4" span-sm="3" span-xs="3">
+    4, md4, sm3, xs3
+  </lavu-grid-cell>
+  <lavu-grid-cell span="6" span-md="3" span-sm="3" span-xs="1">
+    6, md3, sm3, xs1
+  </lavu-grid-cell>
+  <lavu-grid-cell span="6" span-md="5" span-sm="2" hide-xs>
+    6, md5, sm2, hide-xs
+  </lavu-grid-cell>
 </lavu-grid>
 ```
 
@@ -59,7 +65,8 @@ $ bower install leifoolsen/lavu-grid --save
   ...
   _mediaQueryChanged: function(e) {
     if(this.$$('mdl-grid:first-child') == e.target) {
-      console.log('media-query-changed: ' + e.detail.screenClass + ', ' + e.detail.mediaQuery);
+      console.log('media-query-changed: ' 
+        + e.detail.screenClass + ', ' + e.detail.mediaQuery);
     }
   }
 </script>
