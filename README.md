@@ -32,13 +32,13 @@ $ bower install leifoolsen/lavu-grid --save
 
 ## Usage
 
-1. Import Custom Element:
+#### Import Custom Element:
 
 ```html
 <link rel="import" href="bower_components/lavu-grid/lavu-grid.html">
 ```
 
-2. Start using it:
+#### Start using it:
 
 ```html
 <lavu-grid>
@@ -48,7 +48,7 @@ $ bower install leifoolsen/lavu-grid --save
 </lavu-grid>
 ```
 
-3. Listen to media query changes (optional):
+#### Listen to media query changes (optional):
 
 ```html
 <mdl-grid on-media-query-changed='_mediaQueryChanged'>
