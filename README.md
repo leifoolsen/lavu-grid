@@ -49,7 +49,7 @@ $ bower install leifoolsen/lavu-grid --save
 </lavu-grid>
 ```
 
-This example renders a grid with four cells. Each cell spans two columns.
+This example renders a grid with four cells. Each cell spans four columns.
 
 #### Listen to media query changes (optional):
 
