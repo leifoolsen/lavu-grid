@@ -1,6 +1,6 @@
 # lavu-grid
 
-A Polymer 1.x Responsive Grid based on Material Design [Grid lists](http://www.google.com/design/spec/components/grid-lists.html)
+A Polymer 1.x Responsive Grid.
 
 The CSS from [Material Design Lite grid](https://github.com/google/material-design-lite/tree/master/src/grid) is used as a base, so most of this documentaion is copy pasted from that URL.
 
