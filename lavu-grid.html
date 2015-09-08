@@ -11,9 +11,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../iron-media-query/iron-media-query.html">
 
 <!--
-A Polymer 1.x Responsive Grid.
+# lavu-grid
 
-The CSS from [Material Design Lite grid](https://github.com/google/material-design-lite/tree/master/src/grid) is used as a base, so a large part of the documentation is copy pasted from the [Material Design Lite](http://www.getmdl.io/index.html) layout [GRID](http://www.getmdl.io/components/index.html#layout-section/grid) section.
+The `lavu-grid` is a Polymer 1.x Responsive Grid and defines a container for the `lavu-grid-cell` components.
+
+CSS from [Material Design Lite grid](https://github.com/google/material-design-lite/tree/master/src/grid) is used as a base, so a large part of the documentation is copy pasted from the [Material Design Lite](http://www.getmdl.io/index.html) layout [GRID](http://www.getmdl.io/components/index.html#layout-section/grid) section.
 
 
 ### Introduction
@@ -28,16 +30,50 @@ A grid has 16 columns in the large (desktop) screen size, 12 in the medium (desk
 You can set a maximum grid width, after which the grid stays centered with padding on either side, by setting a `max-width` CSS property in `--lavu-grid` mixin.
 
 
-Example:
+#### Example:
 
-    <lavu-grid>
-      <lavu-grid-cell>4</lavu-grid-cell>
-      <lavu-grid-cell>4</lavu-grid-cell>
-      <lavu-grid-cell>4</lavu-grid-cell>
-      <lavu-grid-cell>4</lavu-grid-cell>
-    </lavu-grid>
+```html
+<lavu-grid>
+  <lavu-grid-cell>4</lavu-grid-cell>
+  <lavu-grid-cell>4</lavu-grid-cell>
+  <lavu-grid-cell>4</lavu-grid-cell>
+  <lavu-grid-cell>4</lavu-grid-cell>
+</lavu-grid>
+```
 
 This example renders a grid with four cells. Each cell spans four columns.
+
+#### Listen to media query changes (optional):
+
+```html
+<mdl-grid on-media-query-changed='_mediaQueryChanged'>
+  ...
+</mdl-grid>
+
+<script>
+  ...
+  _mediaQueryChanged: function(e) {
+    if(this.$$('mdl-grid:first-child') == e.target) {
+      console.log('media-query-changed: '
+        + e.detail.screenClass + ', ' + e.detail.mediaQuery);
+    }
+  }
+</script>
+
+```
+
+#### Change default media query values (optional)
+
+```html
+<lavu-grid media-queries='
+  { "queryXs": "(max-width: 768px)",
+    "querySm": "(min-width: 769px) and (max-width: 991px)",
+    "queryMd": "(min-width: 992px) and (max-width: 1199px)",
+    "queryLg": "(min-width: 1200px)"
+  }' >
+  ...
+</lavu-grid>
+```
 
 ### Styling
 
@@ -625,10 +661,10 @@ Custom property               | Description | Default
     }
   </style>
   <template>
-    <iron-media-query id="q-xs" query="{{queryXs}}" query-matches="{{_isXs}}"></iron-media-query>
-    <iron-media-query id="q-sm" query="{{querySm}}" query-matches="{{_isSm}}"></iron-media-query>
-    <iron-media-query id="q-md" query="{{queryMd}}" query-matches="{{_isMd}}"></iron-media-query>
-    <iron-media-query id="q-lg" query="{{queryLg}}" query-matches="{{_isLg}}"></iron-media-query>
+    <iron-media-query id="q-xs" query="{{_queryXs}}" query-matches="{{_isXs}}"></iron-media-query>
+    <iron-media-query id="q-sm" query="{{_querySm}}" query-matches="{{_isSm}}"></iron-media-query>
+    <iron-media-query id="q-md" query="{{_queryMd}}" query-matches="{{_isMd}}"></iron-media-query>
+    <iron-media-query id="q-lg" query="{{_queryLg}}" query-matches="{{_isLg}}"></iron-media-query>
 
     <content select="lavu-grid-cell"></content>
   </template>
@@ -646,8 +682,17 @@ Custom property               | Description | Default
        * @event media-query-changed
        */
 
-
       properties: {
+
+      /**
+       * Modifies the grid and cells to have no gutter or margin.
+       * @attribute noSpacing
+       */
+
+
+      /**
+       * The CSS media queries to evaluate.
+       */
         mediaQueries: {
           type: Object,
           value: function() {
@@ -674,42 +719,54 @@ Custom property               | Description | Default
           },
           observer: '_onMediaQueriesChanged'
         },
-        queryXs: {
+        _queryXs: {
           type: String
         },
-        querySm: {
+        _querySm: {
           type: String
         },
-        queryMd: {
+        _queryMd: {
           type: String
         },
-        queryLg: {
+        _queryLg: {
           type: String
         },
         _screenClass: {
           type: String
         }
+
       },
 
       observers: [
         '_onQueryMatchesChanged(_isXs, _isSm, _isMd, _isLg)'
       ],
 
+      /**
+       * Change media queries
+       */
       _onMediaQueriesChanged: function(newValue) {
         this.async(function() {
-          this.queryXs = newValue.queryXs;
-          this.querySm = newValue.querySm;
-          this.queryMd = newValue.queryMd;
-          this.queryLg = newValue.queryLg;
+          this._queryXs = newValue.queryXs;
+          this._querySm = newValue.querySm;
+          this._queryMd = newValue.queryMd;
+          this._queryLg = newValue.queryLg;
         });
       },
 
+      /**
+       * A handler that is called when a media query is matched. Fires `media-query-changed`.
+       *
+       * @param {Boolean} isXs. True if media query for extra small device is matched.
+       * @param {Boolean} isSm. True if media query for small sized device is matched.
+       * @param {Boolean} isMd. True if media query for medium sized device is matched.
+       * @param {Boolean} isLg. True if media query for large sized device is matched.
+       */
       _onQueryMatchesChanged: function(isXs, isSm, isMd, isLg) {
         var newScreenClass = isXs ? "screen-xs" : isSm ? "screen-sm" : isMd ? "screen-md" : isLg ? "screen-lg" : null;
 
         if(newScreenClass && newScreenClass !== this._screenClass) {
           this._screenClass = newScreenClass;
-          var mediaQuery  = isXs ? this.queryXs : isSm ? this.querySm : isMd ? this.queryMd : this.queryLg;
+          var mediaQuery  = isXs ? this._queryXs : isSm ? this._querySm : isMd ? this._queryMd : this._queryLg;
 
           this.async(function() {
             this.classList.remove("screen-xs", "screen-sm", "screen-md", "screen-lg");
@@ -722,6 +779,13 @@ Custom property               | Description | Default
   })();
   </script>
 </dom-module>
+
+
+<!--
+# lavu-grid-cell
+
+The cells in the `lavu-grid` component.
+-->
 
 <dom-module id="lavu-grid-cell">
   <template>

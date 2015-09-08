@@ -1,8 +1,8 @@
-# &lt;lavu-grid&gt;
+# lavu-grid
 
-A Polymer 1.x Responsive Grid.
+The `lavu-grid` is a Polymer 1.x Responsive Grid and defines a container for the `lavu-grid-cell` components.
 
-The CSS from [Material Design Lite grid](https://github.com/google/material-design-lite/tree/master/src/grid) is used as a base, so a large part of the documentation is copy pasted from the [Material Design Lite](http://www.getmdl.io/index.html) layout [GRID](http://www.getmdl.io/components/index.html#layout-section/grid) section.
+CSS from [Material Design Lite grid](https://github.com/google/material-design-lite/tree/master/src/grid) is used as a base, so a large part of the documentation is copy pasted from the [Material Design Lite](http://www.getmdl.io/index.html) layout [GRID](http://www.getmdl.io/components/index.html#layout-section/grid) section.
 
 ## Introduction
 
@@ -68,6 +68,20 @@ This example renders a grid with four cells. Each cell spans four columns.
 </script>
 
 ```
+
+#### Change default media query values (optional)
+
+```html
+<lavu-grid media-queries='
+  { "queryXs": "(max-width: 768px)",
+    "querySm": "(min-width: 769px) and (max-width: 991px)",
+    "queryMd": "(min-width: 992px) and (max-width: 1199px)",
+    "queryLg": "(min-width: 1200px)"
+  }'>
+  ...
+</lavu-grid>
+```
+
 
 ## Running locally
 
