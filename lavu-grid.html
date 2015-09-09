@@ -102,30 +102,30 @@ Custom property               | Description | Default
 @demo demo/index.html
 @hero hero.svg
 -->
+
 <dom-module id="lavu-grid">
 
   <style>
     :root {
-      --grid-xs-columns: 4;
-      --grid-xs-gutter: var(--grid-lg-gutter);
-      --grid-xs-margin: var(--grid-lg-margin);
-
-      --grid-sm-columns: 8;
-      --grid-sm-gutter: var(--grid-lg-gutter);
-      --grid-sm-margin: var(--grid-lg-margin);
-
-      --grid-md-columns: 12;
-      --grid-md-gutter: var(--grid-lg-gutter);
-      --grid-md-margin: var(--grid-lg-gutter);
-
-      --grid-lg-columns: 16;
-      --grid-lg-gutter: 4px;
-      --grid-lg-margin: 4px;
-
-      --grid-cell-default-columns: var(--grid-xs-columns);
     }
 
     :host {
+      --grid-xs-columns: 4;
+      --grid-xs-gutter: var(--grid-lg-gutter);
+      --grid-xs-margin: var(--grid-lg-margin);
+      --grid-sm-columns: 8;
+      --grid-sm-gutter: var(--grid-lg-gutter);
+      --grid-sm-margin: var(--grid-lg-margin);
+      --grid-md-columns: 12;
+      --grid-md-gutter: var(--grid-lg-gutter);
+      --grid-md-margin: var(--grid-lg-gutter);
+      --grid-lg-columns: 16;
+      --grid-lg-gutter: 4px;
+      --grid-lg-margin: 4px;
+      --grid-cell-default-columns: var(--grid-xs-columns);
+
+      -webkit-box-sizing: border-box; /*  Safari (< 5.1), Chrome (< 10) */
+      -moz-box-sizing: border-box;    /* Firefox (< 29) */
       box-sizing: border-box;
 
       -webkit-flex-flow: row wrap;
@@ -273,10 +273,10 @@ Custom property               | Description | Default
 
     /* Small devices, Tablets */
     :host(.screen-sm) {
-      padding: calc(var(--grid-md-margin) - var(--grid-md-gutter) / 2);
+      padding: calc(var(--grid-sm-margin) - var(--grid-sm-gutter) / 2);
     }
     :host(.screen-sm) ::content > lavu-grid-cell {
-      margin: calc(var(--grid-md-gutter) / 2 );
+      margin: calc(var(--grid-sm-gutter) / 2 );
       width: calc(var(--grid-cell-default-columns) / var(--grid-sm-columns) * 100% - var(--grid-sm-gutter));
     }
     :host(.screen-sm[no-spacing]) ::content > lavu-grid-cell {
@@ -799,4 +799,3 @@ The cells in the `lavu-grid` component.
     })();
   </script>
 </dom-module>
-
