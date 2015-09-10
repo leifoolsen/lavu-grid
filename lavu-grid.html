@@ -13,7 +13,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <!--
 # lavu-grid
 
-The `lavu-grid` is a Polymer 1.x Responsive Grid and defines a container for the `lavu-grid-cell` components.
+The `lavu-grid` is a Polymer 1.x Responsive Grid and defines a container for the `lavu-cell` components.
 
 CSS from [Material Design Lite grid](https://github.com/google/material-design-lite/tree/master/src/grid) is used as a base, so a large part of the documentation is copy pasted from the [Material Design Lite](http://www.getmdl.io/index.html) layout [GRID](http://www.getmdl.io/components/index.html#layout-section/grid) section.
 
@@ -27,33 +27,66 @@ A grid has 16 columns in the large (desktop) screen size, 12 in the medium (desk
 - If a cell doesn't fit in the row in one of the screen sizes, it flows into the following line.
 - If a cell has a specified column size equal to or larger than the number of columns for the current screen size, it takes up the entirety of its row.
 
-You can set a maximum grid width, after which the grid stays centered with padding on either side, by setting a `max-width` CSS property in `--lavu-grid` mixin.
+
+Style the `lavu-grid` as desired (colors, font size, maximum width, etc.), by setting CSS properties in `--lavu-grid` mixin. By setting a `max-width` CSS property in `--lavu-grid` mixin, the grid stays centered with padding on either side.
 
 
 #### Example:
 
+- Install the component using [Bower](http://bower.io/):
+
+```sh
+$ bower install leifoolsen/lavu-grid --save
+```
+
+- Import the `lavu-grid` Element
+
+```html
+<link rel="import" href="../bower_components/lavu-grid/lavu-grid.html">
+```
+
+- Code a `lavu-grid` element.
+
 ```html
 <lavu-grid>
-  <lavu-grid-cell>4</lavu-grid-cell>
-  <lavu-grid-cell>4</lavu-grid-cell>
-  <lavu-grid-cell>4</lavu-grid-cell>
-  <lavu-grid-cell>4</lavu-grid-cell>
 </lavu-grid>
 ```
 
-This example renders a grid with four cells. Each cell spans four columns.
+- For each cell, code one "inner" `lavu-cell`, including the content to be displayed. Add a `span` attribute, where the `span` attribute value specifies the column size for the cell.
+
+```html
+<lavu-grid>
+  <lavu-cell span="4">Grid</lavu-cell>
+  <lavu-cell span="4">content</lavu-cell>
+  <lavu-cell span="4">goes</lavu-cell>
+  <lavu-cell span="4">here</lavu-cell>
+</lavu-grid>
+```
+
+- Optionally add `span` attributes targeting a spesific device size.
+
+```html
+<lavu-grid>
+  <lavu-cell span="4" span-xs="1" span-lg="6">Grid</lavu-cell>
+  <lavu-cell span="4" span-xs="3" span-lg="4">content</lavu-cell>
+  <lavu-cell span="4" span-xs="3" span-lg="3">goes</lavu-cell>
+  <lavu-cell span="4" span-xs="1" span-lg="3">here</lavu-cell>
+</lavu-grid>
+```
+
+This example renders a grid with four cells. Each cell spans four columns by default. If device size matches the media query defined for an extra small device, the grid spans columns given in the `span-xs` attributes. If device size matches the media query defined for a large device, the grid spans columns given in the `span-lg` attributes.
 
 #### Listen to media query changes (optional):
 
 ```html
-<mdl-grid on-media-query-changed='_mediaQueryChanged'>
+<lavu-grid on-media-query-changed='_mediaQueryChanged'>
   ...
-</mdl-grid>
+</lavu-grid>
 
 <script>
   ...
   _mediaQueryChanged: function(e) {
-    if(this.$$('mdl-grid:first-child') == e.target) {
+    if(this.$$('lavu-grid:first-child') == e.target) {
       console.log('media-query-changed: '
         + e.detail.screenClass + ', ' + e.detail.mediaQuery);
     }
@@ -77,7 +110,7 @@ This example renders a grid with four cells. Each cell spans four columns.
 
 ### Styling
 
-The following custom properties and mixins are available for styling:
+The following custom properties and mixins are available for styling the `lavu-grid` element:
 
 Custom property               | Description | Default
 ------------------------------|-------------|----------
@@ -102,30 +135,30 @@ Custom property               | Description | Default
 @demo demo/index.html
 @hero hero.svg
 -->
-
 <dom-module id="lavu-grid">
 
   <style>
     :root {
-    }
-
-    :host {
       --grid-xs-columns: 4;
       --grid-xs-gutter: var(--grid-lg-gutter);
       --grid-xs-margin: var(--grid-lg-margin);
+
       --grid-sm-columns: 8;
       --grid-sm-gutter: var(--grid-lg-gutter);
       --grid-sm-margin: var(--grid-lg-margin);
+
       --grid-md-columns: 12;
       --grid-md-gutter: var(--grid-lg-gutter);
       --grid-md-margin: var(--grid-lg-gutter);
+
       --grid-lg-columns: 16;
       --grid-lg-gutter: 4px;
       --grid-lg-margin: 4px;
-      --grid-cell-default-columns: var(--grid-xs-columns);
 
-      -webkit-box-sizing: border-box; /*  Safari (< 5.1), Chrome (< 10) */
-      -moz-box-sizing: border-box;    /* Firefox (< 29) */
+      --grid-cell-default-columns: var(--grid-xs-columns);
+    }
+
+    :host {
       box-sizing: border-box;
 
       -webkit-flex-flow: row wrap;
@@ -159,12 +192,32 @@ Custom property               | Description | Default
     :host([no-spacing]) {
       padding: 0 !important;  /* TODO: How to avoid !important ?? */
     }
-    :host([no-spacing]) ::content > lavu-grid-cell {
-      margin: 0 !important;   /* TODO: How to avoid !important ?? */
-    }
 
-    :host ::content lavu-grid-cell {
+    :host ::content > lavu-cell {
       box-sizing: border-box;
+    }
+    :host ::content [top] {
+      -webkit-align-self: flex-start;
+      -ms-flex-item-align: start;
+      align-self: flex-start;
+    }
+    :host ::content [middle] {
+      -webkit-align-self: center;
+      -ms-flex-item-align: center;
+      align-self: center;
+    }
+    :host ::content [bottom] {
+      -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+      align-self: flex-end;
+    }
+    :host ::content [stretch] {
+      -webkit-align-self: stretch;
+      -ms-flex-item-align: stretch;
+      align-self: stretch;
+    }
+    :host([no-spacing]) ::content > lavu-cell {
+      margin: 0 !important;   /* TODO: How to avoid !important ?? */
     }
 
     /* Extra small devices, Phones */
@@ -176,11 +229,11 @@ Custom property               | Description | Default
     :host(.screen-xs) {
       padding: calc(var(--grid-xs-margin) - var(--grid-xs-gutter) / 2);
     }
-    :host(.screen-xs) ::content > lavu-grid-cell {
+    :host(.screen-xs) ::content > lavu-cell {
       margin: calc(var(--grid-xs-gutter) / 2 );
       width: calc(var(--grid-cell-default-columns) / var(--grid-xs-columns) * 100% - var(--grid-xs-gutter));
     }
-    :host(.screen-xs[no-spacing]) ::content > lavu-grid-cell {
+    :host(.screen-xs[no-spacing]) ::content > lavu-cell {
       width: calc((var(--grid-cell-default-columns) / var(--grid-xs-columns)) * 100%);
     }
     :host(.screen-xs) ::content > [hide-xs] {
@@ -273,13 +326,13 @@ Custom property               | Description | Default
 
     /* Small devices, Tablets */
     :host(.screen-sm) {
-      padding: calc(var(--grid-sm-margin) - var(--grid-sm-gutter) / 2);
+      padding: calc(var(--grid-md-margin) - var(--grid-md-gutter) / 2);
     }
-    :host(.screen-sm) ::content > lavu-grid-cell {
-      margin: calc(var(--grid-sm-gutter) / 2 );
+    :host(.screen-sm) ::content > lavu-cell {
+      margin: calc(var(--grid-md-gutter) / 2 );
       width: calc(var(--grid-cell-default-columns) / var(--grid-sm-columns) * 100% - var(--grid-sm-gutter));
     }
-    :host(.screen-sm[no-spacing]) ::content > lavu-grid-cell {
+    :host(.screen-sm[no-spacing]) ::content > lavu-cell {
       width: calc((var(--grid-cell-default-columns) / var(--grid-sm-columns)) * 100%);
     }
     :host(.screen-sm) ::content > [hide-sm] {
@@ -390,11 +443,11 @@ Custom property               | Description | Default
     :host(.screen-md) {
       padding: calc(var(--grid-md-margin) - var(--grid-md-gutter) / 2);
     }
-    :host(.screen-md) ::content > lavu-grid-cell {
+    :host(.screen-md) ::content > lavu-cell {
       margin: calc(var(--grid-md-gutter) / 2 );
       width: calc(var(--grid-cell-default-columns) / var(--grid-md-columns) * 100% - var(--grid-md-gutter));
     }
-    :host(.screen-md[no-spacing]) ::content > lavu-grid-cell {
+    :host(.screen-md[no-spacing]) ::content > lavu-cell {
       width: calc((var(--grid-cell-default-columns) / var(--grid-md-columns)) * 100%);
     }
     :host(.screen-md) ::content > [hide-md] {
@@ -521,11 +574,11 @@ Custom property               | Description | Default
     :host(.screen-lg) {
       padding: calc(var(--grid-lg-margin) - var(--grid-lg-gutter) / 2);
     }
-    :host(.screen-lg) ::content > lavu-grid-cell {
+    :host(.screen-lg) ::content > lavu-cell {
       margin: calc(var(--grid-lg-gutter) / 2 );
       width: calc(var(--grid-cell-default-columns) / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
     }
-    :host(.screen-lg[no-spacing]) ::content > lavu-grid-cell {
+    :host(.screen-lg[no-spacing]) ::content > lavu-cell {
       width: calc((var(--grid-cell-default-columns) / var(--grid-lg-columns)) * 100%);
     }
     :host(.screen-lg) ::content > [hide-lg] {
@@ -666,7 +719,7 @@ Custom property               | Description | Default
     <iron-media-query id="q-md" query="{{_queryMd}}" query-matches="{{_isMd}}"></iron-media-query>
     <iron-media-query id="q-lg" query="{{_queryLg}}" query-matches="{{_isLg}}"></iron-media-query>
 
-    <content select="lavu-grid-cell"></content>
+    <content select="lavu-cell"></content>
   </template>
 
   <script>
@@ -685,7 +738,7 @@ Custom property               | Description | Default
       properties: {
 
       /**
-       * Modifies the grid and cells to have no gutter or margin.
+       * Modifies the grid and cells to have no gutter or margin and spacing.
        * @attribute noSpacing
        */
 
@@ -782,20 +835,24 @@ Custom property               | Description | Default
 
 
 <!--
-# lavu-grid-cell
+# lavu-cell
 
 The cells in the `lavu-grid` component.
 -->
 
-<dom-module id="lavu-grid-cell">
+<dom-module id="lavu-cell">
+  <style>
+  </style>
+
   <template>
     <content></content>
   </template>
   <script>
     (function() {
       Polymer({
-        is: 'lavu-grid-cell'
+        is: 'lavu-cell'
       });
     })();
   </script>
 </dom-module>
+

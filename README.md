@@ -1,6 +1,6 @@
 # lavu-grid
 
-The `lavu-grid` is a Polymer 1.x Responsive Grid and defines a container for the `lavu-grid-cell` components.
+The `lavu-grid` is a Polymer 1.x Responsive Grid and defines a container for the `lavu-cell` components.
 
 CSS from [Material Design Lite grid](https://github.com/google/material-design-lite/tree/master/src/grid) is used as a base, so a large part of the documentation is copy pasted from the [Material Design Lite](http://www.getmdl.io/index.html) layout [GRID](http://www.getmdl.io/components/index.html#layout-section/grid) section.
 
@@ -13,7 +13,7 @@ A grid has 16 columns in the large (desktop) screen size, 12 in the medium (desk
 - If a cell doesn't fit in the row in one of the screen sizes, it flows into the following line.
 - If a cell has a specified column size equal to or larger than the number of columns for the current screen size, it takes up the entirety of its row.
 
-You can set a maximum grid width, after which the grid stays centered with padding on either side, by setting a `max-width` CSS property in `--lavu-grid` mixin.
+Style the `lavu-grid` as desired (colors, font size, maximum width, etc.), by setting CSS properties in `--lavu-grid` mixin. By setting a `max-width` CSS property in `--lavu-grid` mixin, the grid stays centered with padding on either side.
 
 
 ## Demo and Documentaion
@@ -34,17 +34,17 @@ $ bower install leifoolsen/lavu-grid --save
 #### Import Custom Element:
 
 ```html
-<link rel="import" href="bower_components/lavu-grid/lavu-grid.html">
+<link rel="import" href="../bower_components/lavu-grid/lavu-grid.html">
 ```
 
 #### Start using it:
 
 ```html
 <lavu-grid>
-  <lavu-grid-cell>4</lavu-grid-cell>
-  <lavu-grid-cell>4</lavu-grid-cell>
-  <lavu-grid-cell>4</lavu-grid-cell>
-  <lavu-grid-cell>4</lavu-grid-cell>
+  <lavu-cell>4</lavu-cell>
+  <lavu-cell>4</lavu-cell>
+  <lavu-cell>4</lavu-cell>
+  <lavu-cell>4</lavu-cell>
 </lavu-grid>
 ```
 
@@ -53,14 +53,14 @@ This example renders a grid with four cells. Each cell spans four columns.
 #### Listen to media query changes (optional):
 
 ```html
-<mdl-grid on-media-query-changed='_mediaQueryChanged'>
+<lavu-grid on-media-query-changed='_mediaQueryChanged'>
   ...
-</mdl-grid>
+</lavu-grid>
 
 <script>
   ...
   _mediaQueryChanged: function(e) {
-    if(this.$$('mdl-grid:first-child') == e.target) {
+    if(this.$$('lavu-grid:first-child') == e.target) {
       console.log('media-query-changed: ' 
         + e.detail.screenClass + ', ' + e.detail.mediaQuery);
     }
@@ -77,7 +77,7 @@ This example renders a grid with four cells. Each cell spans four columns.
     "querySm": "(min-width: 769px) and (max-width: 991px)",
     "queryMd": "(min-width: 992px) and (max-width: 1199px)",
     "queryLg": "(min-width: 1200px)"
-  }'>
+  }' >
   ...
 </lavu-grid>
 ```
@@ -99,7 +99,7 @@ $ polyserve
 
 ### Styling
 
-The following custom properties and mixins are available for styling:
+The following custom properties and mixins are available for styling the `lavu-grid` element:
 
 Custom property               | Description | Default
 ------------------------------|-------------|----------
