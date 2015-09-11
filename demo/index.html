@@ -13,133 +13,191 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <title>lavu-grid Demo</title>
+
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
   <link rel="import" href="../../paper-styles/paper-styles.html">
   <link rel="import" href="../lavu-grid.html">
+
+  <link rel="import" href="nested-grid-demo.html">
 
   <link rel="stylesheet" href="../../paper-styles/demo.css">
 
   <style is="custom-style">
 
-    lavu-cell.red,
-    lavu-cell.yellow,
-    lavu-cell.green,
-    lavu-cell.blue,
-    lavu-cell.cornflower-blue,
-    lavu-cell.dark-gray,
-    lavu-cell.dark-magenta,
-    lavu-cell.golden-rod,
-    lavu-cell.dark-orchid,
-    lavu-cell.fuchsia,
-    lavu-cell.medium-orchid,
-    lavu-cell.olive,
-    lavu-cell.turqouise,
-    lavu-cell.teal,
-    lavu-cell.coral,
-    lavu-cell.orange {
-      font-weight: bold;
-      background: transparent;
-      text-align: center;
-      color: #fff;
+    .demo-grid lavu-cell {
+      background-color: #BDBDBD;
+      height: 100px;
+      padding-left: 8px;
+      padding-top: 4px;
+      color: white;
     }
-    lavu-cell.red {
-      background-color: red;
-    }
-    lavu-cell.yellow {
-      background-color: gold;
-    }
-    lavu-cell.green {
-      background-color: green;
-    }
-    lavu-cell.blue {
-      background-color: blue;
-    }
-    lavu-cell.cornflower-blue {
-      background-color: cornflowerBlue;
-    }
-    lavu-cell.dark-gray {
-      background-color: darkGray;
-    }
-    lavu-cell.dark-magenta {
-      background-color: darkMagenta;
-    }
-    lavu-cell.golden-rod {
-      background-color: goldenRod;
-    }
-    lavu-cell.dark-orchid {
-      background-color: darkOrchid;
-    }
-    lavu-cell.fuchsia {
-      background-color: fuchsia;
-    }
-    lavu-cell.medium-orchid {
-      background-color: mediumOrchid;
-    }
-    lavu-cell.orange {
-      background-color: orange;
-    }
-    lavu-cell.olive {
-      background-color: olive;
-    }
-    lavu-cell.turqouise {
-      background-color: #AFEEEE;
-    }
-    lavu-cell.teal {
-      background-color: #008080;
-    }
-    lavu-cell.coral {
-      background-color: #F08080;
+    .demo-grid lavu-grid:first-of-type lavu-cell {
+      height: 50px;
     }
   </style>
 
 </head>
 <body unresolved>
 
-  <p>An example of <code>&lt;lavu-grid&gt;</code>:</p>
+  <p>Some examples of <code>&lt;lavu-grid&gt;</code>:</p>
+  <div class="demo-grid">
+    <lavu-grid>
+      <lavu-cell span="1">1</lavu-cell>
+      <lavu-cell span="1">1</lavu-cell>
+      <lavu-cell span="1">1</lavu-cell>
+      <lavu-cell span="1">1</lavu-cell>
+      <lavu-cell span="1">1</lavu-cell>
+      <lavu-cell span="1">1</lavu-cell>
+      <lavu-cell span="1">1</lavu-cell>
+      <lavu-cell span="1">1</lavu-cell>
+      <lavu-cell span="1">1</lavu-cell>
+      <lavu-cell span="1">1</lavu-cell>
+      <lavu-cell span="1">1</lavu-cell>
+      <lavu-cell span="1">1</lavu-cell>
+      <lavu-cell span="1">1</lavu-cell>
+      <lavu-cell span="1">1</lavu-cell>
+      <lavu-cell span="1">1</lavu-cell>
+      <lavu-cell span="1">1</lavu-cell>
+    </lavu-grid>
 
-  <lavu-grid no-spacing style="margin-bottom: 4px">
-    <lavu-cell span="1" class="red">1</lavu-cell>
-    <lavu-cell span="1" class="yellow">2</lavu-cell>
-    <lavu-cell span="1" class="green">3</lavu-cell>
-    <lavu-cell span="1" class="blue">4</lavu-cell>
-    <lavu-cell span="1" class="cornflower-blue">5</lavu-cell>
-    <lavu-cell span="1" class="dark-gray">6</lavu-cell>
-    <lavu-cell span="1" class="dark-magenta">7</lavu-cell>
-    <lavu-cell span="1" class="golden-rod">8</lavu-cell>
-    <lavu-cell span="1" class="dark-orchid">9</lavu-cell>
-    <lavu-cell span="1" class="fuchsia">10</lavu-cell>
-    <lavu-cell span="1" class="medium-orchid">11</lavu-cell>
-    <lavu-cell span="1" class="orange">12</lavu-cell>
-    <lavu-cell span="1" class="olive">13</lavu-cell>
-    <lavu-cell span="1" class="turqouise">14</lavu-cell>
-    <lavu-cell span="1" class="teal">15</lavu-cell>
-    <lavu-cell span="1" class="coral">16</lavu-cell>
-  </lavu-grid>
+    <lavu-grid>
+      <lavu-cell>4</lavu-cell>
+      <lavu-cell>4</lavu-cell>
+      <lavu-cell>4</lavu-cell>
+      <lavu-cell>4</lavu-cell>
+    </lavu-grid>
 
-  <lavu-grid>
-    <lavu-cell class="orange">4</lavu-cell>
-    <lavu-cell class="fuchsia">4</lavu-cell>
-    <lavu-cell class="coral">4</lavu-cell>
-    <lavu-cell class="yellow">4</lavu-cell>
-  </lavu-grid>
+    <lavu-grid>
+      <lavu-cell span="8" span-md="6" span-sm="4" span-xs="2">8, md6, sm4, xs2</lavu-cell>
+      <lavu-cell span="6" span-md="4" span-sm="3" span-xs="1">6, md4, sm3, xs1</lavu-cell>
+      <lavu-cell span="2" span-md="2" span-sm="1" span-xs="1">2, md2, sm1, xs1</lavu-cell>
+    </lavu-grid>
 
-  <lavu-grid no-spacing style="margin-bottom: 4px">
-    <lavu-cell span="8" span-md="7" class="coral">8, md7</lavu-cell>
-    <lavu-cell span="4" span-md="5" class="fuchsia">4, md5</lavu-cell>
-    <lavu-cell span="4" span-md="12" class="cornflower-blue">4, md12</lavu-cell>
-  </lavu-grid>
+    <lavu-grid>
+      <lavu-cell span="8" span-md="7">8, md7</lavu-cell>
+      <lavu-cell span="4" span-md="5">4, md5</lavu-cell>
+      <lavu-cell span="4" span-md="12">4, md12</lavu-cell>
+    </lavu-grid>
 
-  <lavu-grid>
-    <lavu-cell span="8" span-md="6" span-sm="4" span-xs="2" class="cornflower-blue">8, md6, sm4, xs2</lavu-cell>
-    <lavu-cell span="6" span-md="4" span-sm="3" span-xs="1" class="dark-magenta">6, md4, sm3, xs1</lavu-cell>
-    <lavu-cell span="2" span-md="2" span-sm="1" span-xs="1" class="orange">2, md2, sm1, xs1</lavu-cell>
-  </lavu-grid>
+    <lavu-grid>
+      <lavu-cell span="8" span-md="6" span-sm="4" span-xs="2">8, md6, sm4, xs2</lavu-cell>
+      <lavu-cell span="6" span-md="4" span-sm="3" span-xs="1">6, md4, sm3, xs1</lavu-cell>
+      <lavu-cell span="2" span-md="2" span-sm="1" span-xs="1">2, md2, sm1, xs1</lavu-cell>
+    </lavu-grid>
 
-  <lavu-grid>
-    <lavu-cell span="4" span-md="4" span-sm="3" span-xs="3" class="red">4, md4, sm3, xs3</lavu-cell>
-    <lavu-cell span="6" span-md="3" span-sm="3" span-xs="1" class="yellow">6, md3, sm3, xs1</lavu-cell>
-    <lavu-cell span="6" span-md="5" span-sm="2" hide-xs class="green">6, md5, sm2, hide-xs</lavu-cell>
-  </lavu-grid>
+    <lavu-grid>
+      <lavu-cell span="4" span-md="4" span-sm="3" span-xs="3">4, md4, sm3, xs3</lavu-cell>
+      <lavu-cell span="6" span-md="3" span-sm="3" span-xs="1">6, md3, sm3, xs1</lavu-cell>
+      <lavu-cell span="6" span-md="5" span-sm="2" hide-xs>6, md5, sm2, hide-xs</lavu-cell>
+    </lavu-grid>
+
+  </div>
+
+  <nested-grid-demo></nested-grid-demo>
+
+
+  <div style="margin: 8px;">
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:0;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #1e90ff; font-weight: bold">&lt;lavu-grid&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-grid&gt;</span>
+
+<span style="color: #1e90ff; font-weight: bold">&lt;lavu-grid&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell&gt;</span>4<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell&gt;</span>4<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell&gt;</span>4<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell&gt;</span>4<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-grid&gt;</span>
+
+<span style="color: #1e90ff; font-weight: bold">&lt;lavu-grid&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;8&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;6&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">span-xs=</span><span style="color: #aa5500">&quot;2&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>8, md6, sm4, xs2<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;6&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;3&quot;</span> <span style="color: #1e90ff">span-xs=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>6, md4, sm3, xs1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;2&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;2&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;1&quot;</span> <span style="color: #1e90ff">span-xs=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>2, md2, sm1, xs1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-grid&gt;</span>
+
+<span style="color: #1e90ff; font-weight: bold">&lt;lavu-grid&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;8&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;7&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>8, md7<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;5&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>4, md5<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;12&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>4, md12<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-grid&gt;</span>
+
+<span style="color: #1e90ff; font-weight: bold">&lt;lavu-grid&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;8&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;6&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">span-xs=</span><span style="color: #aa5500">&quot;2&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>8, md6, sm4, xs2<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;6&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;3&quot;</span> <span style="color: #1e90ff">span-xs=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>6, md4, sm3, xs1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;2&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;2&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;1&quot;</span> <span style="color: #1e90ff">span-xs=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>2, md2, sm1, xs1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-grid&gt;</span>
+
+<span style="color: #1e90ff; font-weight: bold">&lt;lavu-grid&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;3&quot;</span> <span style="color: #1e90ff">span-xs=</span><span style="color: #aa5500">&quot;3&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>4, md4, sm3, xs3<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;6&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;3&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;3&quot;</span> <span style="color: #1e90ff">span-xs=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>6, md3, sm3, xs1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;6&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;5&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;2&quot;</span> <span style="color: #1e90ff;">hide-xs</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>6, md5, sm2, hide-xs<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-grid&gt;</span>
+</pre></div>
+
+</div>
+
+
+<p>Nested grid</p>
+
+<div style="margin: 8px 8px 0 8px;">
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:0;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #1e90ff; font-weight: bold">&lt;lavu-grid</span> <span style="color: #FF0000; background-color: #FFAAAA">no-spacing</span> <span style="color: #1e90ff">on-media-query-changed=</span><span style="color: #aa5500">&#39;_mediaQueryChanged&#39;</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;outer&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;8&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;6&quot;</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;cornflower-blue&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+    <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;content-1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/div&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+
+  <span style="color: #1e90ff; font-weight: bold">&lt;template</span> <span style="color: #1e90ff">is=</span><span style="color: #aa5500">&quot;dom-if&quot;</span> <span style="color: #1e90ff">if=</span><span style="color: #aa5500">&quot;{{!_isScreenMd}}&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+    <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;8&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;7&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+      <span style="color: #1e90ff; font-weight: bold">&lt;lavu-grid</span> <span style="color: #FF0000; background-color: #FFAAAA">no-spacing</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+        <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;8&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;golden-rod&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+          <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;content-2&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/div&gt;</span>
+        <span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+        <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;8&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;dark-orchid&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+          <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;content-2&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/div&gt;</span>
+        <span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+        <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;8&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;olive&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+          <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;content-2&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/div&gt;</span>
+        <span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+        <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;8&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;coral&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+          <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;content-2&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/div&gt;</span>
+        <span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+      <span style="color: #1e90ff; font-weight: bold">&lt;/lavu-grid&gt;</span>
+    <span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;/template&gt;</span>
+
+  <span style="color: #1e90ff; font-weight: bold">&lt;template</span> <span style="color: #1e90ff">is=</span><span style="color: #aa5500">&quot;dom-if&quot;</span> <span style="color: #1e90ff">if=</span><span style="color: #aa5500">&quot;{{_isScreenMd}}&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+    <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;6&quot;</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;golden-rod&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+      <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;content-1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/div&gt;</span>
+    <span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+    <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;dark-orchid&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+      <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;content-2&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/div&gt;</span>
+    <span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+    <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;olive&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+      <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;content-2&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/div&gt;</span>
+    <span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+    <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;coral&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+      <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;content-2&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/div&gt;</span>
+    <span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;/template&gt;</span>
+<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-grid&gt;</span>
+</pre></div>
+
+</div>
+
 
 </body>
 </html>
