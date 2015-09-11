@@ -1,6 +1,6 @@
 # lavu-grid
 
-<img src="lavu-grid.png" width="100%" />
+<img src="lavu-grid.jpg" width="100%; max-width: 1200px; margin: 0 auto;" />
 
 The `lavu-grid` is a Polymer 1.x Responsive Grid and defines a container for the `lavu-cell` components.
 
@@ -20,7 +20,8 @@ Style the `lavu-grid` as desired (colors, font size, maximum width, etc.), by se
 
 ## Demo and Documentaion
 
-See the component page.
+(No releases yet. Clone and install to view documentation and examples)
+<!-- [See the component page](http://leifoolsen.github.io/lavu-grid/). -->
 
 
 ## Install
@@ -97,30 +98,6 @@ $ npm install --global polyserve
 $ polyserve
 ```
 
-## Reference 
-
-### Styling
-
-The following custom properties and mixins are available for styling the `lavu-grid` element:
-
-Custom property               | Description | Default
-------------------------------|-------------|----------
-`--grid-xs-columns`           | Columns extra small devices (phones) | 4
-`--grid-xs-gutter`            | Gutter extra small devices (phones)  | `--grid-lg-gutter`
-`--grid-xs-margin`            | Margin extra small devices (phones)  | `--grid-lg-margin`
-`--grid-sm-columns`           | Columns small devices (tablets)      | 8;
-`--grid-sm-gutter`            | Gutter small devices (tablets)       | `--grid-lg-gutter`
-`--grid-sm-margin`            | Margin small devices (tablets)       | `--grid-lg-margin`
-`--grid-md-columns`           | Columns medium devices (desktops)    | 12;
-`--grid-md-gutter`            | Gutter medium devices (desktops)     | `--grid-lg-gutter`
-`--grid-md-margin`            | Margin medium devices (desktops)     | `--grid-lg-gutter`
-`--grid-lg-columns`           | Columns large devices (desktops)     | 16;
-`--grid-lg-gutter`            | Gutter large devices (desktops)      | 4px;
-`--grid-lg-margin`            | Margin large devices (desktops)      | 4px;
-`--grid-cell-default-columns` | Default number of columns            | `--grid-xs-columns`
-`--lavu-grid`                 | Mixin applied to the grid            | `{}`
-
-
 ## License
 
 Licensed under the **[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)** (the "License");
@@ -131,3 +108,7 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+#### @TODO
+- Add reordering
+- Add offset
