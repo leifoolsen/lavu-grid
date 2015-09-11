@@ -1,5 +1,7 @@
 # lavu-grid
 
+<img src="lavu-grid.png" width="100%" />
+
 The `lavu-grid` is a Polymer 1.x Responsive Grid and defines a container for the `lavu-cell` components.
 
 CSS from [Material Design Lite grid](https://github.com/google/material-design-lite/tree/master/src/grid) is used as a base, so a large part of the documentation is copy pasted from the [Material Design Lite](http://www.getmdl.io/index.html) layout [GRID](http://www.getmdl.io/components/index.html#layout-section/grid) section.

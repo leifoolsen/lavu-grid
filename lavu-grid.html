@@ -13,12 +13,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <!--
 # lavu-grid
 
+<img src="lavu-grid.png" width="100%" />
+
 The `lavu-grid` is a Polymer 1.x Responsive Grid and defines a container for the `lavu-cell` components.
 
 CSS from [Material Design Lite grid](https://github.com/google/material-design-lite/tree/master/src/grid) is used as a base, so a large part of the documentation is copy pasted from the [Material Design Lite](http://www.getmdl.io/index.html) layout [GRID](http://www.getmdl.io/components/index.html#layout-section/grid) section.
 
 
-### Introduction
+## Introduction
 
 The `lavu-grid` **grid** component is a simplified method for laying out content for multiple screen sizes. It reduces the usual coding burden required to correctly display blocks of content in a variety of display conditions.
 
@@ -31,7 +33,7 @@ A grid has 16 columns in the large (desktop) screen size, 12 in the medium (desk
 Style the `lavu-grid` as desired (colors, font size, maximum width, etc.), by setting CSS properties in `--lavu-grid` mixin. By setting a `max-width` CSS property in `--lavu-grid` mixin, the grid stays centered with padding on either side.
 
 
-#### Example:
+### Example:
 
 - Install the component using [Bower](http://bower.io/):
 
@@ -52,7 +54,7 @@ $ bower install leifoolsen/lavu-grid --save
 </lavu-grid>
 ```
 
-- For each cell, code one "inner" `lavu-cell`, including the content to be displayed. Add a `span` attribute, where the `span` attribute value specifies the column size for the cell.
+- For each cell, code one "inner" `lavu-cell` element, including the content to be displayed. Add a `span` attribute, where the `span` attribute value specifies the column size for the cell.
 
 ```html
 <lavu-grid>
@@ -76,7 +78,7 @@ $ bower install leifoolsen/lavu-grid --save
 
 This example renders a grid with four cells. Each cell spans four columns by default. If device size matches the media query defined for an extra small device, the grid spans columns given in the `span-xs` attributes. If device size matches the media query defined for a large device, the grid spans columns given in the `span-lg` attributes.
 
-#### Listen to media query changes (optional):
+### Listen to media query changes (optional):
 
 ```html
 <lavu-grid on-media-query-changed='_mediaQueryChanged'>
@@ -95,7 +97,7 @@ This example renders a grid with four cells. Each cell spans four columns by def
 
 ```
 
-#### Change default media query values (optional)
+### Change default media query values (optional)
 
 ```html
 <lavu-grid media-queries='
@@ -108,12 +110,12 @@ This example renders a grid with four cells. Each cell spans four columns by def
 </lavu-grid>
 ```
 
-### Styling
+## Styling
 
 The following custom properties and mixins are available for styling the `lavu-grid` element:
 
-Custom property               | Description | Default
-------------------------------|-------------|----------
+ Custom property              | Description | Default
+:-----------------------------|:------------|:---------
 `--grid-xs-columns`           | Columns extra small devices (phones) | 4
 `--grid-xs-gutter`            | Gutter extra small devices (phones)  | `--grid-lg-gutter`
 `--grid-xs-margin`            | Margin extra small devices (phones)  | `--grid-lg-margin`
@@ -130,7 +132,37 @@ Custom property               | Description | Default
 `--lavu-grid`                 | Mixin applied to the grid            | `{}`
 
 
-@group Seed Elements
+## Attributes, lavu-grid
+
+The following attributes are available for styling the `lavu-grid` element:
+
+ Attribute    | Description | Remarks
+:-------------|:------------|:---------
+`no-spacing`  | Modifies the grid and cells to have no gutter or margin | Optional on grid container
+
+
+## Attributes, lavu-cell
+
+The following attributes are available for styling the `lavu-cell` element:
+
+ Attribute     | Description | Remarks
+:--------------|:------------|:---------
+`span="N"`     | Sets the column size for the cell to N | N is 1-16 inclusive, defaults to 4
+`span-xs="N"`  | Sets the column size for the cell to N if device size matches the media query defined for extra small device size | N is 1-4 inclusive, defaults to 4
+`span-sm="N"`  | Sets the column size for the cell to N if device size matches the media query defined for small device size | N is 1-8 inclusive, defaults to 4
+`span-md="N"`  | Sets the column size for the cell to N if device size matches the media query defined for medium device size | N is 1-12 inclusive, defaults to 4
+<span style="white-space: nowrap;">`span-lg="N"`</span>| Sets the column size for the cell to N if device size matches the media query defined for large device size |<span style="white-space: nowrap;">N is 1-16 inclusive, defaults to 4</span>
+`hide-xs`      | Hides the cell if device size matches the media query defined for extra small device size |
+`hide-sm`      | Hides the cell if device size matches the media query defined for small device size |
+`hide-md`      | Hides the cell if device size matches the media query defined for medium device size |
+`hide-lg`      | Hides the cell if device size matches the media query defined for large device size |
+`stretch`      | Stretches the cell vertically to fill the parent |
+`top`          | Aligns the cell to the top of the parent |
+`middle`       | Aligns the cell to the middle of the parent |
+`bottom`       | Aligns the cell to the bottom of the parent |
+
+
+@group lavu-grid
 @element lavu-grid
 @demo demo/index.html
 @hero hero.svg
@@ -737,15 +769,22 @@ Custom property               | Description | Default
 
       properties: {
 
-      /**
-       * Modifies the grid and cells to have no gutter or margin and spacing.
-       * @attribute noSpacing
-       */
+        /**
+         * Modifies the grid and cells to have no gutter or margin and spacing.
+         * @attribute noSpacing
+         */
 
 
-      /**
-       * The CSS media queries to evaluate.
-       */
+        /**
+         * The CSS media queries to evaluate.
+         * Use JSON format to add a set of new media queries, e.g.<br/>
+         * <code>media-queries='<br/>
+         * &nbsp;&nbsp;{ "queryXs": "(max-width: 768px)",<br/>
+         * &nbsp;&nbsp;&nbsp;&nbsp;"querySm": "(min-width: 769px) and (max-width: 991px)",<br/>
+         * &nbsp;&nbsp;&nbsp;&nbsp;"queryMd": "(min-width: 992px) and (max-width: 1199px)",<br/>
+         * &nbsp;&nbsp;&nbsp;&nbsp;"queryLg": "(min-width: 1200px)"<br/>
+         * &nbsp;&nbsp;}'</code>
+         */
         mediaQueries: {
           type: Object,
           value: function() {
