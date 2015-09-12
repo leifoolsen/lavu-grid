@@ -20,8 +20,7 @@ Style the `lavu-grid` as desired (colors, font size, maximum width, etc.), by se
 
 ## Demo and Documentaion
 
-(No releases yet. Clone and install to view documentation and examples)
-<!-- [See the component page](http://leifoolsen.github.io/lavu-grid/). -->
+[See the component page](http://leifoolsen.github.io/lavu-grid/).
 
 
 ## Install

@@ -1,5 +1,4 @@
 <link rel="import" href="../../polymer/polymer.html"/>
-
 <dom-module id="nested-grid-demo">
 
   <link rel="import" href="../lavu-grid.html" />
@@ -7,7 +6,6 @@
   <style>
     :host {
     }
-
     :host .content-1,
     :host .content-2 {
       height: 100px;
@@ -37,7 +35,6 @@
     :host .olive {
       background-color: olive;
     }
-
     .outer {
       --lavu-grid: {
         margin: 8px 8px 16px;
@@ -102,19 +99,14 @@
             type: Boolean
           }
         },
-
         _mediaQueryChanged: function(e) {
-            console.log('media-query-changed' + ': ' + e.detail.screenClass + ', ' + e.detail.mediaQuery);
+            //console.log('media-query-changed' + ': '
+            //  + e.detail.screenClass + ', ' + e.detail.mediaQuery);
 
             this._screenClass = e.detail.screenClass;
             this._isScreenMd =  this._screenClass === 'screen-md';
-          //}
         }
-
       });
     })();
   </script>
-
 </dom-module>
-
-
