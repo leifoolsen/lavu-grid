@@ -2,7 +2,7 @@
 
 <img src="lavu-grid.jpg" width="100%; max-width: 1200px; margin: 0 auto;" />
 
-The `lavu-grid` is a Polymer 1.x Responsive Grid and defines a container for html elements with `role="cell"` or ´lavu-cell` custom elements.
+The `lavu-grid` is a Polymer 1.x Responsive Grid and defines a container for html elements with `role="cell"` or `lavu-cell` custom elements.
 
 CSS from [Material Design Lite grid](https://github.com/google/material-design-lite/tree/master/src/grid) is used as a base, so a large part of the documentation is copy pasted from the [Material Design Lite](http://www.getmdl.io/index.html) layout [GRID](http://www.getmdl.io/components/index.html#layout-section/grid) section.
 
@@ -43,10 +43,10 @@ $ bower install leifoolsen/lavu-grid --save
 
 ```html
 <lavu-grid>
-  <lavu-cell>4</lavu-cell>
-  <lavu-cell>4</lavu-cell>
-  <lavu-cell>4</lavu-cell>
-  <lavu-cell>4</lavu-cell>
+  <div role="cell">4</div>
+  <div role="cell">4</div>
+  <div role="cell">4</div>
+  <div role="cell">4</div>
 </lavu-grid>
 ```
 
