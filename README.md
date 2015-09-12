@@ -1,6 +1,6 @@
 # lavu-grid
 
-<img src="lavu-grid.jpg" width="100%; max-width: 1200px; margin: 0 auto;" />
+<img src="https://github.com/leifoolsen/lavu-grid/blob/master/lavu-grid.jpg" width="100%; max-width: 1200px; margin: 0 auto;" />
 
 The `lavu-grid` is a Polymer 1.x Responsive Grid and defines a container for html elements with `role="cell"` or `lavu-cell` custom elements.
 
