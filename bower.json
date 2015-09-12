@@ -4,14 +4,14 @@
   "authors": [
     "Leif Olsen <leif.o.olsen@gmail.com>"
   ],
-  "description": "Responsive grid.",
+  "description": "The `lavu-grid` grid component is a simplified method for laying out content for multiple screen sizes. It reduces the usual coding burden required to correctly display blocks of content in a variety of display conditions.",
   "keywords": [
     "web-component",
     "web-components",
     "polymer",
-    "seed",
     "layout",
-    "grid"
+    "grid",
+    "responsive-grid"
   ],
   "main": "lavu-grid.html",
   "repository": {
