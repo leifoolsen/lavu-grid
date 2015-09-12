@@ -1,5 +1,7 @@
 # Change Log
 
+## 0.0.4 - 
+
 ## 0.0.3 - 2015-09-12
 Added order attribute to control the order in which cells appear in the lavu-grid container
 
