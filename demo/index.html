@@ -24,17 +24,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <style is="custom-style">
 
-    .demo-grid lavu-cell {
+    .demo-grid lavu-cell,
+    .demo-grid [role='cell'] {
       background-color: #BDBDBD;
       height: 100px;
       padding-left: 8px;
       padding-top: 4px;
       color: white;
     }
-    .demo-grid lavu-grid:first-of-type lavu-cell {
+    .demo-grid lavu-grid:first-of-type lavu-cell,
+    .demo-grid lavu-grid:first-of-type [role='cell'] {
       height: 50px;
     }
-    .demo-grid lavu-grid:nth-child(even) lavu-cell {
+    .demo-grid lavu-grid:nth-child(even) lavu-cell,
+    .demo-grid lavu-grid:nth-child(even) [role='cell'] {
       background-color: #CBCBCB;
     }
   </style>
@@ -77,9 +80,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </lavu-grid>
 
     <lavu-grid>
-      <lavu-cell span="8" span-md="7">8, md7</lavu-cell>
-      <lavu-cell span="4" span-md="5">4, md5</lavu-cell>
-      <lavu-cell span="4" span-md="12">4, md12</lavu-cell>
+      <div role="cell" span="8" span-md="7">8, md7</div>
+      <div role="cell" span="4" span-md="5">4, md5</div>
+      <div role="cell" span="4" span-md="12">4, md12</div>
     </lavu-grid>
 
     <lavu-grid>
@@ -89,9 +92,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </lavu-grid>
 
     <lavu-grid>
-      <lavu-cell span="4" span-md="4" span-sm="3" span-xs="3">4, md4, sm3, xs3</lavu-cell>
-      <lavu-cell span="6" span-md="3" span-sm="3" span-xs="1">6, md3, sm3, xs1</lavu-cell>
-      <lavu-cell span="6" span-md="5" span-sm="2" hide-xs>6, md5, sm2, hide-xs</lavu-cell>
+      <article role="cell" span="4" span-md="4" span-sm="3" span-xs="3">4, md4, sm3, xs3</article>
+      <article role="cell" span="6" span-md="3" span-sm="3" span-xs="1">6, md3, sm3, xs1</article>
+      <article role="cell" span="6" span-md="5" span-sm="2" hide-xs>6, md5, sm2, hide-xs</article>
     </lavu-grid>
 
   </div>
@@ -134,9 +137,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <span style="color: #1e90ff; font-weight: bold">&lt;/lavu-grid&gt;</span>
 
 <span style="color: #1e90ff; font-weight: bold">&lt;lavu-grid&gt;</span>
-  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;8&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;7&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>8, md7<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
-  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;5&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>4, md5<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
-  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;12&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>4, md12<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">role=</span><span style="color: #aa5500">&quot;cell&quot;</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;8&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;7&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>8, md7<span style="color: #1e90ff; font-weight: bold">&lt;/div&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">role=</span><span style="color: #aa5500">&quot;cell&quot;</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;5&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>4, md5<span style="color: #1e90ff; font-weight: bold">&lt;/div&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">role=</span><span style="color: #aa5500">&quot;cell&quot;</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;12&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>4, md12<span style="color: #1e90ff; font-weight: bold">&lt;/div&gt;</span>
 <span style="color: #1e90ff; font-weight: bold">&lt;/lavu-grid&gt;</span>
 
 <span style="color: #1e90ff; font-weight: bold">&lt;lavu-grid&gt;</span>
@@ -146,17 +149,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <span style="color: #1e90ff; font-weight: bold">&lt;/lavu-grid&gt;</span>
 
 <span style="color: #1e90ff; font-weight: bold">&lt;lavu-grid&gt;</span>
-  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;3&quot;</span> <span style="color: #1e90ff">span-xs=</span><span style="color: #aa5500">&quot;3&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>4, md4, sm3, xs3<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
-  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;6&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;3&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;3&quot;</span> <span style="color: #1e90ff">span-xs=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>6, md3, sm3, xs1<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
-  <span style="color: #1e90ff; font-weight: bold">&lt;lavu-cell</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;6&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;5&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;2&quot;</span> <span style="color: #1e90ff;">hide-xs</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>6, md5, sm2, hide-xs<span style="color: #1e90ff; font-weight: bold">&lt;/lavu-cell&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;article</span> <span style="color: #1e90ff">role=</span><span style="color: #aa5500">&quot;cell&quot;</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;4&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;3&quot;</span> <span style="color: #1e90ff">span-xs=</span><span style="color: #aa5500">&quot;3&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>4, md4, sm3, xs3<span style="color: #1e90ff; font-weight: bold">&lt;/article&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;article</span> <span style="color: #1e90ff">role=</span><span style="color: #aa5500">&quot;cell&quot;</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;6&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;3&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;3&quot;</span> <span style="color: #1e90ff">span-xs=</span><span style="color: #aa5500">&quot;1&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>6, md3, sm3, xs1<span style="color: #1e90ff; font-weight: bold">&lt;/article&gt;</span>
+  <span style="color: #1e90ff; font-weight: bold">&lt;article</span> <span style="color: #1e90ff">role=</span><span style="color: #aa5500">&quot;cell&quot;</span> <span style="color: #1e90ff">span=</span><span style="color: #aa5500">&quot;6&quot;</span> <span style="color: #1e90ff">span-md=</span><span style="color: #aa5500">&quot;5&quot;</span> <span style="color: #1e90ff">span-sm=</span><span style="color: #aa5500">&quot;2&quot;</span> <span style="color: #FF0000; background-color: #FFAAAA">hide-xs</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>6, md5, sm2, hide-xs<span style="color: #1e90ff; font-weight: bold">&lt;/article&gt;</span>
 <span style="color: #1e90ff; font-weight: bold">&lt;/lavu-grid&gt;</span>
 </pre></div>
 
-</div>
+
+  </div>
 
 
-<div style="margin: 16px 8px 0 8px;">
-<p>Nested grid demo</p>
+  <div style="margin: 16px 8px 0 8px;">
+  <p>Nested grid demo</p>
 
 
 <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:0;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #1e90ff; font-weight: bold">&lt;link</span> <span style="color: #1e90ff">rel=</span><span style="color: #aa5500">&quot;import&quot;</span> <span style="color: #1e90ff">href=</span><span style="color: #aa5500">&quot;../../polymer/polymer.html&quot;</span><span style="color: #1e90ff; font-weight: bold">/&gt;</span>
@@ -274,7 +278,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 </pre></div>
 
 
-</div>
+  </div>
 
 
 </body>

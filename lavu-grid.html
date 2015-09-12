@@ -15,7 +15,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <img src="lavu-grid.jpg" width="100%; max-width: 1200px" />
 
-The `lavu-grid` is a Polymer 1.x Responsive Grid and defines a container for the `lavu-cell` components.
+The `lavu-grid` is a Polymer 1.x Responsive Grid and defines a container for html elements with `role="cell"` or ´lavu-cell` custom elements.
 
 CSS from [Material Design Lite grid](https://github.com/google/material-design-lite/tree/master/src/grid) is used as a base, so a large part of the documentation is copy pasted from the [Material Design Lite](http://www.getmdl.io/index.html) layout [GRID](http://www.getmdl.io/components/index.html#layout-section/grid) section.
 
@@ -54,7 +54,7 @@ $ bower install leifoolsen/lavu-grid --save
 </lavu-grid>
 ```
 
-- For each cell, code one "inner" `lavu-cell` element, including the content to be displayed. Add a `span` attribute, where the `span` attribute value specifies the column size for the cell.
+- For each cell, code one "inner" `lavu-cell` element - or any other html element with `role="cell"`, including the content to be displayed. Add a `span` attribute, where the `span` attribute value specifies the column size for the cell.
 
 ```html
 <lavu-grid>
@@ -132,7 +132,7 @@ The following custom properties and mixins are available for styling the `lavu-g
 `--lavu-grid`                 | Mixin applied to the grid            | `{}`
 
 
-## Attributes, lavu-grid
+## Attributes for lavu-grid
 
 The following attributes are available for styling the `lavu-grid` element:
 
@@ -141,12 +141,13 @@ The following attributes are available for styling the `lavu-grid` element:
 `no-spacing`  | Modifies the grid and cells to have no gutter or margin | Optional on grid container
 
 
-## Attributes, lavu-cell
+## Attributes for lavu-cell - or element with role="cell"
 
 The following attributes are available for styling the `lavu-cell` element:
 
  Attribute     | Description | Remarks
 :--------------|:------------|:---------
+`role="cell"`  | Instead of using the `lavu-cell` as a child element, use any element with `role="cell"` as a child element |
 `span="N"`     | Sets the column size for the cell to N | N is 1-16 inclusive, defaults to 4
 `span-xs="N"`  | Sets the column size for the cell to N if device size matches the media query defined for extra small device size | N is 1-4 inclusive, defaults to 4
 `span-sm="N"`  | Sets the column size for the cell to N if device size matches the media query defined for small device size | N is 1-8 inclusive, defaults to 4
@@ -225,7 +226,8 @@ The following attributes are available for styling the `lavu-cell` element:
       padding: 0 !important;  /* TODO: How to avoid !important ?? */
     }
 
-    :host ::content > lavu-cell {
+    :host ::content > lavu-cell,
+    :host ::content > [role='cell'] {
       box-sizing: border-box;
     }
     :host ::content [top] {
@@ -248,7 +250,8 @@ The following attributes are available for styling the `lavu-cell` element:
       -ms-flex-item-align: stretch;
       align-self: stretch;
     }
-    :host([no-spacing]) ::content > lavu-cell {
+    :host([no-spacing]) ::content > lavu-cell,
+    :host([no-spacing]) ::content > [role='cell'] {
       margin: 0 !important;   /* TODO: How to avoid !important ?? */
     }
 
@@ -261,11 +264,13 @@ The following attributes are available for styling the `lavu-cell` element:
     :host(.screen-xs) {
       padding: calc(var(--grid-xs-margin) - var(--grid-xs-gutter) / 2);
     }
-    :host(.screen-xs) ::content > lavu-cell {
+    :host(.screen-xs) ::content > lavu-cell,
+    :host(.screen-xs) ::content > [role='cell'] {
       margin: calc(var(--grid-xs-gutter) / 2 );
       width: calc(var(--grid-cell-default-columns) / var(--grid-xs-columns) * 100% - var(--grid-xs-gutter));
     }
-    :host(.screen-xs[no-spacing]) ::content > lavu-cell {
+    :host(.screen-xs[no-spacing]) ::content > lavu-cell,
+    :host(.screen-xs[no-spacing]) ::content > [role='cell'] {
       width: calc((var(--grid-cell-default-columns) / var(--grid-xs-columns)) * 100%);
     }
     :host(.screen-xs) ::content > [hide-xs] {
@@ -360,11 +365,13 @@ The following attributes are available for styling the `lavu-cell` element:
     :host(.screen-sm) {
       padding: calc(var(--grid-md-margin) - var(--grid-md-gutter) / 2);
     }
-    :host(.screen-sm) ::content > lavu-cell {
+    :host(.screen-sm) ::content > lavu-cell,
+    :host(.screen-sm) ::content > [role='cell'] {
       margin: calc(var(--grid-md-gutter) / 2 );
       width: calc(var(--grid-cell-default-columns) / var(--grid-sm-columns) * 100% - var(--grid-sm-gutter));
     }
-    :host(.screen-sm[no-spacing]) ::content > lavu-cell {
+    :host(.screen-sm[no-spacing]) ::content > lavu-cell,
+    :host(.screen-sm[no-spacing]) ::content > [role='cell'] {
       width: calc((var(--grid-cell-default-columns) / var(--grid-sm-columns)) * 100%);
     }
     :host(.screen-sm) ::content > [hide-sm] {
@@ -475,11 +482,13 @@ The following attributes are available for styling the `lavu-cell` element:
     :host(.screen-md) {
       padding: calc(var(--grid-md-margin) - var(--grid-md-gutter) / 2);
     }
-    :host(.screen-md) ::content > lavu-cell {
+    :host(.screen-md) ::content > lavu-cell,
+    :host(.screen-md) ::content > [role='cell'] {
       margin: calc(var(--grid-md-gutter) / 2 );
       width: calc(var(--grid-cell-default-columns) / var(--grid-md-columns) * 100% - var(--grid-md-gutter));
     }
-    :host(.screen-md[no-spacing]) ::content > lavu-cell {
+    :host(.screen-md[no-spacing]) ::content > lavu-cell,
+    :host(.screen-md[no-spacing]) ::content > [role='cell'] {
       width: calc((var(--grid-cell-default-columns) / var(--grid-md-columns)) * 100%);
     }
     :host(.screen-md) ::content > [hide-md] {
@@ -606,11 +615,13 @@ The following attributes are available for styling the `lavu-cell` element:
     :host(.screen-lg) {
       padding: calc(var(--grid-lg-margin) - var(--grid-lg-gutter) / 2);
     }
-    :host(.screen-lg) ::content > lavu-cell {
+    :host(.screen-lg) ::content > lavu-cell,
+    :host(.screen-lg) ::content > [role='cell'] {
       margin: calc(var(--grid-lg-gutter) / 2 );
       width: calc(var(--grid-cell-default-columns) / var(--grid-lg-columns) * 100% - var(--grid-lg-gutter));
     }
-    :host(.screen-lg[no-spacing]) ::content > lavu-cell {
+    :host(.screen-lg[no-spacing]) ::content > lavu-cell,
+    :host(.screen-lg[no-spacing]) ::content > [role='cell'] {
       width: calc((var(--grid-cell-default-columns) / var(--grid-lg-columns)) * 100%);
     }
     :host(.screen-lg) ::content > [hide-lg] {
@@ -751,7 +762,7 @@ The following attributes are available for styling the `lavu-cell` element:
     <iron-media-query id="q-md" query="{{_queryMd}}" query-matches="{{_isMd}}"></iron-media-query>
     <iron-media-query id="q-lg" query="{{_queryLg}}" query-matches="{{_isLg}}"></iron-media-query>
 
-    <content select="lavu-cell"></content>
+    <content select="lavu-cell, [role='cell']"></content>
   </template>
 
   <script>
