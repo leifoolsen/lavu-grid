@@ -1,6 +1,9 @@
-# bower install
-###############
+# polymer #
+###########
+node_modules
+dist
 bower_components
+.tmp
 
 # OS generated files #
 ######################
