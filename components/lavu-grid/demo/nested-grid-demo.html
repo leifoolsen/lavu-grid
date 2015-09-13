@@ -1,0 +1,112 @@
+<link rel="import" href="../../polymer/polymer.html"/>
+<dom-module id="nested-grid-demo">
+
+  <link rel="import" href="../lavu-grid.html" />
+
+  <style>
+    :host {
+    }
+    :host .content-1,
+    :host .content-2 {
+      height: 100px;
+      box-sizing: border-box;
+      color: #fff;
+      padding-left: 8px;
+      padding-top: 4px;
+    }
+    :host .content-2 {
+      height: 50px;
+    }
+    :host .cornflower-blue {
+      background-color: cornflowerBlue;
+    }
+    :host .golden-rod {
+      background-color: goldenRod;
+    }
+    :host .dark-orchid {
+      background-color: darkOrchid;
+    }
+    :host .medium-orchid {
+      background-color: mediumOrchid;
+    }
+    :host .coral {
+      background-color: #F08080;
+    }
+    :host .olive {
+      background-color: olive;
+    }
+    .outer {
+      --lavu-grid: {
+        margin: 8px 8px 16px;
+      }
+    }
+  </style>
+
+  <template>
+
+    <lavu-grid no-spacing on-media-query-changed='_mediaQueryChanged' class="outer">
+      <lavu-cell span="8" span-md="6" class="cornflower-blue">
+        <div class="content-1">Nested grid</div>
+      </lavu-cell>
+
+      <template is="dom-if" if="{{!_isScreenMd}}">
+        <lavu-cell span="8" span-md="7">
+          <lavu-grid no-spacing>
+            <lavu-cell span="8" span-sm="4" class="golden-rod">
+              <div class="content-2"></div>
+            </lavu-cell>
+            <lavu-cell span="8" span-sm="4" class="dark-orchid">
+              <div class="content-2"></div>
+            </lavu-cell>
+            <lavu-cell span="8" span-sm="4" class="olive">
+              <div class="content-2"></div>
+            </lavu-cell>
+            <lavu-cell span="8" span-sm="4" class="coral">
+              <div class="content-2"></div>
+            </lavu-cell>
+          </lavu-grid>
+        </lavu-cell>
+      </template>
+
+      <template is="dom-if" if="{{_isScreenMd}}">
+        <lavu-cell span-md="6" class="golden-rod">
+          <div class="content-1"></div>
+        </lavu-cell>
+        <lavu-cell span-md="4" class="dark-orchid">
+          <div class="content-2"></div>
+        </lavu-cell>
+        <lavu-cell span-md="4" class="olive">
+          <div class="content-2"></div>
+        </lavu-cell>
+        <lavu-cell span-md="4" class="coral">
+          <div class="content-2"></div>
+        </lavu-cell>
+      </template>
+    </lavu-grid>
+
+  </template>
+
+  <script>
+    (function() {
+      Polymer({
+        is: 'nested-grid-demo',
+
+        properties: {
+          _screenClass: {
+            type: String
+          },
+          _isScreenMd: {
+            type: Boolean
+          }
+        },
+        _mediaQueryChanged: function(e) {
+            //console.log('media-query-changed' + ': '
+            //  + e.detail.screenClass + ', ' + e.detail.mediaQuery);
+
+            this._screenClass = e.detail.screenClass;
+            this._isScreenMd =  this._screenClass === 'screen-md';
+        }
+      });
+    })();
+  </script>
+</dom-module>
