@@ -153,11 +153,16 @@ The following attributes are available for styling the `lavu-cell` element:
 `span-sm="N"`  | Sets the column size for the cell to N if device size matches the media query defined for small device size | N is 1-8 inclusive, defaults to 4
 `span-md="N"`  | Sets the column size for the cell to N if device size matches the media query defined for medium device size | N is 1-12 inclusive, defaults to 4
 `span-lg="N"`  | Sets the column size for the cell to N if device size matches the media query defined for large device size |N is 1-16 inclusive, defaults to 4
-`order="N"`    | By default, cells are laid out in the source order. The order attribut controls the order in which they appear in the grid | N is 1-16 inclusive
-<span style="white-space: nowrap;">`order-xs="N"`</span>| The order attribute if device size matches the media query defined for extra small device size | N is 1-16 inclusive
+`order="N"`    | By default, cells are laid out in the source order. The order attribute controls the order in which they appear in the grid | N is 1-16 inclusive
+`order-xs="N"` | The order attribute if device size matches the media query defined for extra small device size | N is 1-16 inclusive
 `order-sm="N"` | The order attribute if device size matches the media query defined for small device size | N is 1-16 inclusive
 `order-md="N"` | The order attribute if device size matches the media query defined for medium device size | N is 1-16 inclusive
 `order-lg="N"` | The order attribute if device size matches the media query defined for large device size | N is 1-16 inclusive
+`offset="N"`   | Sets the offset of cell to N columns | N is 1-15 inclusive
+<span style="white-space: nowrap;">`offset-xs="N"`</span>| Sets the offset of cell to N columns if device size matches the media query defined for extra small device size | N is 1-3 inclusive
+`offset-sm="N"`| Sets the offset of cell to N columns if device size matches the media query defined for small device size | N is 1-7 inclusive
+`offset-md="N"`| Sets the offset of cell to N columns if device size matches the media query defined for madium device size | N is 1-11 inclusive
+`offset-lg="N"`| Sets the offset of cell to N columns if device size matches the media query defined for large device size | N is 1-15 inclusive
 `hide-xs`      | Hides the cell if device size matches the media query defined for extra small device size |
 `hide-sm`      | Hides the cell if device size matches the media query defined for small device size |
 `hide-md`      | Hides the cell if device size matches the media query defined for medium device size |
@@ -528,6 +533,89 @@ The following attributes are available for styling the `lavu-cell` element:
       width: calc(4 / var(--grid-xs-columns) * 100%);
     }
 
+    :host(.screen-xs) ::content > [offset='1'],
+    :host(.screen-xs) ::content > [offset-xs='1'][offset-xs='1'] {
+      margin-left: calc(1 / var(--grid-xs-columns) * 100% + var(--grid-xs-gutter)/2);
+    }
+    :host(.screen-xs[no-spacing]) ::content > [offset='1'],
+    :host(.screen-xs[no-spacing]) ::content > [offset-xs='1'][offset-xs='1'] {
+      margin-left: calc(1 / var(--grid-xs-columns) * 100%);
+    }
+    :host(.screen-xs) ::content > [offset='2'],
+    :host(.screen-xs) ::content > [offset-xs='2'][offset-xs='2'] {
+      margin-left: calc(2 / var(--grid-xs-columns) * 100% + var(--grid-xs-gutter)/2);
+    }
+    :host(.screen-xs[no-spacing]) ::content > [offset='2'],
+    :host(.screen-xs[no-spacing]) ::content > [offset-xs='2'][offset-xs='2'] {
+      margin-left: calc(2 / var(--grid-xs-columns) * 100%);
+    }
+    :host(.screen-xs) ::content > [offset='3'],
+    :host(.screen-xs) ::content > [offset-xs='3'][offset-xs='3'] {
+      margin-left: calc(3 / var(--grid-xs-columns) * 100% + var(--grid-xs-gutter)/2);
+    }
+    :host(.screen-xs[no-spacing]) ::content > [offset='3'],
+    :host(.screen-xs[no-spacing]) ::content > [offset-xs='3'][offset-xs='3'] {
+      margin-left: calc(3 / var(--grid-xs-columns) * 100%);
+    }
+
+    :host(.screen-xs) ::content > [offset='4'],
+    :host(.screen-xs) ::content > [offset-xs='4'][offset-xs='4'],
+    :host(.screen-xs) ::content > [offset='5'],
+    :host(.screen-xs) ::content > [offset-xs='5'][offset-xs='5'],
+    :host(.screen-xs) ::content > [offset='6'],
+    :host(.screen-xs) ::content > [offset-xs='6'][offset-xs='6'],
+    :host(.screen-xs) ::content > [offset='7'],
+    :host(.screen-xs) ::content > [offset-xs='7'][offset-xs='7'],
+    :host(.screen-xs) ::content > [offset='8'],
+    :host(.screen-xs) ::content > [offset-xs='8'][offset-xs='8'],
+    :host(.screen-xs) ::content > [offset='9'],
+    :host(.screen-xs) ::content > [offset-xs='9'][offset-xs='9'],
+    :host(.screen-xs) ::content > [offset='10'],
+    :host(.screen-xs) ::content > [offset-xs='10'][offset-xs='10'],
+    :host(.screen-xs) ::content > [offset='11'],
+    :host(.screen-xs) ::content > [offset-xs='11'][offset-xs='11'],
+    :host(.screen-xs) ::content > [offset='12'],
+    :host(.screen-xs) ::content > [offset-xs='12'][offset-xs='12'],
+    :host(.screen-xs) ::content > [offset='13'],
+    :host(.screen-xs) ::content > [offset-xs='13'][offset-xs='13'],
+    :host(.screen-xs) ::content > [offset='14'],
+    :host(.screen-xs) ::content > [offset-xs='14'][offset-xs='14'],
+    :host(.screen-xs) ::content > [offset='15'],
+    :host(.screen-xs) ::content > [offset-xs='15'][offset-xs='15'],
+    :host(.screen-xs) ::content > [offset='16'],
+    :host(.screen-xs) ::content > [offset-xs='16'][offset-xs='16'] {
+      margin-left: calc(3 / var(--grid-xs-columns) * 100% + var(--grid-xs-gutter)/2);
+    }
+    :host(.screen-xs[no-spacing]) ::content > [offset='4'],
+    :host(.screen-xs[no-spacing]) ::content > [offset-xs='4'][offset-xs='4'],
+    :host(.screen-xs[no-spacing]) ::content > [offset='5'],
+    :host(.screen-xs[no-spacing]) ::content > [offset-xs='5'][offset-xs='5'],
+    :host(.screen-xs[no-spacing]) ::content > [offset='6'],
+    :host(.screen-xs[no-spacing]) ::content > [offset-xs='6'][offset-xs='6'],
+    :host(.screen-xs[no-spacing]) ::content > [offset='7'],
+    :host(.screen-xs[no-spacing]) ::content > [offset-xs='7'][offset-xs='7'],
+    :host(.screen-xs[no-spacing]) ::content > [offset='8'],
+    :host(.screen-xs[no-spacing]) ::content > [offset-xs='8'][offset-xs='8'],
+    :host(.screen-xs[no-spacing]) ::content > [offset='9'],
+    :host(.screen-xs[no-spacing]) ::content > [offset-xs='9'][offset-xs='9'],
+    :host(.screen-xs[no-spacing]) ::content > [offset='10'],
+    :host(.screen-xs[no-spacing]) ::content > [offset-xs='10'][offset-xs='10'],
+    :host(.screen-xs[no-spacing]) ::content > [offset='11'],
+    :host(.screen-xs[no-spacing]) ::content > [offset-xs='11'][offset-xs='11'],
+    :host(.screen-xs[no-spacing]) ::content > [offset='12'],
+    :host(.screen-xs[no-spacing]) ::content > [offset-xs='12'][offset-xs='12'],
+    :host(.screen-xs[no-spacing]) ::content > [offset='13'],
+    :host(.screen-xs[no-spacing]) ::content > [offset-xs='13'][offset-xs='13'],
+    :host(.screen-xs[no-spacing]) ::content > [offset='14'],
+    :host(.screen-xs[no-spacing]) ::content > [offset-xs='14'][offset-xs='14'],
+    :host(.screen-xs[no-spacing]) ::content > [offset='15'],
+    :host(.screen-xs[no-spacing]) ::content > [offset-xs='15'][offset-xs='15'],
+    :host(.screen-xs[no-spacing]) ::content > [offset='16'],
+    :host(.screen-xs[no-spacing]) ::content > [offset-xs='16'][offset-xs='16'] {
+      margin-left: calc(3 / var(--grid-xs-columns) * 100%);
+    }
+
+
     /* Small devices, Tablets */
     :host(.screen-sm) {
       padding: calc(var(--grid-md-margin) - var(--grid-md-gutter) / 2);
@@ -644,6 +732,105 @@ The following attributes are available for styling the `lavu-cell` element:
     :host(.screen-sm[no-spacing]) ::content > [span-sm='16'][span-sm='16'] {
       width: calc(8 / var(--grid-sm-columns) * 100%);
     }
+
+    :host(.screen-sm) ::content > [offset='1'],
+    :host(.screen-sm) ::content > [offset-sm='1'][offset-sm='1'] {
+      margin-left: calc(1 / var(--grid-sm-columns) * 100% + var(--grid-sm-gutter)/2);
+    }
+    :host(.screen-sm[no-spacing]) ::content > [offset='1'],
+    :host(.screen-sm[no-spacing]) ::content > [offset-sm='1'][offset-sm='1'] {
+      margin-left: calc(1 / var(--grid-sm-columns) * 100%);
+    }
+    :host(.screen-sm) ::content > [offset='2'],
+    :host(.screen-sm) ::content > [offset-sm='2'][offset-sm='2'] {
+      margin-left: calc(2 / var(--grid-sm-columns) * 100% + var(--grid-sm-gutter)/2);
+    }
+    :host(.screen-sm[no-spacing]) ::content > [offset='2'],
+    :host(.screen-sm[no-spacing]) ::content > [offset-sm='2'][offset-sm='2'] {
+      margin-left: calc(2 / var(--grid-sm-columns) * 100%);
+    }
+    :host(.screen-sm) ::content > [offset='3'],
+    :host(.screen-sm) ::content > [offset-sm='3'][offset-sm='3'] {
+      margin-left: calc(3 / var(--grid-sm-columns) * 100% + var(--grid-sm-gutter)/2);
+    }
+    :host(.screen-sm[no-spacing]) ::content > [offset='3'],
+    :host(.screen-sm[no-spacing]) ::content > [offset-sm='3'][offset-sm='3'] {
+      margin-left: calc(3 / var(--grid-sm-columns) * 100%);
+    }
+    :host(.screen-sm) ::content > [offset='4'],
+    :host(.screen-sm) ::content > [offset-sm='4'][offset-sm='4'] {
+      margin-left: calc(4 / var(--grid-sm-columns) * 100% + var(--grid-sm-gutter)/2);
+    }
+    :host(.screen-sm[no-spacing]) ::content > [offset='4'],
+    :host(.screen-sm[no-spacing]) ::content > [offset-sm='4'][offset-sm='4'] {
+      margin-left: calc(4 / var(--grid-sm-columns) * 100%);
+    }
+    :host(.screen-sm) ::content > [offset='5'],
+    :host(.screen-sm) ::content > [offset-sm='5'][offset-sm='5'] {
+      margin-left: calc(5 / var(--grid-sm-columns) * 100% + var(--grid-sm-gutter)/2);
+    }
+    :host(.screen-sm[no-spacing]) ::content > [offset='5'],
+    :host(.screen-sm[no-spacing]) ::content > [offset-sm='5'][offset-sm='5'] {
+      margin-left: calc(5 / var(--grid-sm-columns) * 100%);
+    }
+    :host(.screen-sm) ::content > [offset='6'],
+    :host(.screen-sm) ::content > [offset-sm='6'][offset-sm='6'] {
+      margin-left: calc(6 / var(--grid-sm-columns) * 100% + var(--grid-sm-gutter)/2);
+    }
+    :host(.screen-sm[no-spacing]) ::content > [offset='6'],
+    :host(.screen-sm[no-spacing]) ::content > [offset-sm='6'][offset-sm='6'] {
+      margin-left: calc(6 / var(--grid-sm-columns) * 100%);
+    }
+    :host(.screen-sm) ::content > [offset='7'],
+    :host(.screen-sm) ::content > [offset-sm='7'][offset-sm='7'] {
+      margin-left: calc(7 / var(--grid-sm-columns) * 100% + var(--grid-sm-gutter)/2);
+    }
+    :host(.screen-sm[no-spacing]) ::content > [offset='7'],
+    :host(.screen-sm[no-spacing]) ::content > [offset-sm='7'][offset-sm='7'] {
+      margin-left: calc(1 / var(--grid-sm-columns) * 100%);
+    }
+
+    :host(.screen-sm) ::content > [offset='8'],
+    :host(.screen-sm) ::content > [offset-sm='8'][offset-sm='8'],
+    :host(.screen-sm) ::content > [offset='9'],
+    :host(.screen-sm) ::content > [offset-sm='9'][offset-sm='9'],
+    :host(.screen-sm) ::content > [offset='10'],
+    :host(.screen-sm) ::content > [offset-sm='10'][offset-sm='10'],
+    :host(.screen-sm) ::content > [offset='11'],
+    :host(.screen-sm) ::content > [offset-sm='11'][offset-sm='11'],
+    :host(.screen-sm) ::content > [offset='12'],
+    :host(.screen-sm) ::content > [offset-sm='12'][offset-sm='12'],
+    :host(.screen-sm) ::content > [offset='13'],
+    :host(.screen-sm) ::content > [offset-sm='13'][offset-sm='13'],
+    :host(.screen-sm) ::content > [offset='14'],
+    :host(.screen-sm) ::content > [offset-sm='14'][offset-sm='14'],
+    :host(.screen-sm) ::content > [offset='15'],
+    :host(.screen-sm) ::content > [offset-sm='15'][offset-sm='15'],
+    :host(.screen-sm) ::content > [offset='16'],
+    :host(.screen-sm) ::content > [offset-sm='16'][offset-sm='16'] {
+      margin-left: calc(7 / var(--grid-sm-columns) * 100% + var(--grid-sm-gutter)/2);
+    }
+    :host(.screen-sm[no-spacing]) ::content > [offset='8'],
+    :host(.screen-sm[no-spacing]) ::content > [offset-sm='8'][offset-sm='8'],
+    :host(.screen-sm[no-spacing]) ::content > [offset='9'],
+    :host(.screen-sm[no-spacing]) ::content > [offset-sm='9'][offset-sm='9'],
+    :host(.screen-sm[no-spacing]) ::content > [offset='10'],
+    :host(.screen-sm[no-spacing]) ::content > [offset-sm='10'][offset-sm='10'],
+    :host(.screen-sm[no-spacing]) ::content > [offset='11'],
+    :host(.screen-sm[no-spacing]) ::content > [offset-sm='11'][offset-sm='11'],
+    :host(.screen-sm[no-spacing]) ::content > [offset='12'],
+    :host(.screen-sm[no-spacing]) ::content > [offset-sm='12'][offset-sm='12'],
+    :host(.screen-sm[no-spacing]) ::content > [offset='13'],
+    :host(.screen-sm[no-spacing]) ::content > [offset-sm='13'][offset-sm='13'],
+    :host(.screen-sm[no-spacing]) ::content > [offset='14'],
+    :host(.screen-sm[no-spacing]) ::content > [offset-sm='14'][offset-sm='14'],
+    :host(.screen-sm[no-spacing]) ::content > [offset='15'],
+    :host(.screen-sm[no-spacing]) ::content > [offset-sm='15'][offset-sm='15'],
+    :host(.screen-sm[no-spacing]) ::content > [offset='16'],
+    :host(.screen-sm[no-spacing]) ::content > [offset-sm='16'][offset-sm='16'] {
+      margin-left: calc(1 / var(--grid-sm-columns) * 100%);
+    }
+
 
     /* Medium devices, Desktops */
     :host(.screen-md) {
@@ -776,6 +963,121 @@ The following attributes are available for styling the `lavu-cell` element:
     :host(.screen-md[no-spacing]) ::content > [span='16'],
     :host(.screen-md[no-spacing]) ::content > [span-md='16'][span-md='16'] {
       width: calc(12 / var(--grid-md-columns) * 100%);
+    }
+
+    :host(.screen-md) ::content > [offset='1'],
+    :host(.screen-md) ::content > [offset-md='1'][offset-md='1'] {
+      margin-left: calc(1 / var(--grid-md-columns) * 100% + var(--grid-md-gutter)/2);
+    }
+    :host(.screen-md[no-spacing]) ::content > [offset='1'],
+    :host(.screen-md[no-spacing]) ::content > [offset-md='1'][offset-md='1'] {
+      margin-left: calc(1 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [offset='2'],
+    :host(.screen-md) ::content > [offset-md='2'][offset-md='2'] {
+      margin-left: calc(2 / var(--grid-md-columns) * 100% + var(--grid-md-gutter)/2);
+    }
+    :host(.screen-md[no-spacing]) ::content > [offset='2'],
+    :host(.screen-md[no-spacing]) ::content > [offset-md='2'][offset-md='2'] {
+      margin-left: calc(2 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [offset='3'],
+    :host(.screen-md) ::content > [offset-md='3'][offset-md='3'] {
+      margin-left: calc(3 / var(--grid-md-columns) * 100% + var(--grid-md-gutter)/2);
+    }
+    :host(.screen-md[no-spacing]) ::content > [offset='3'],
+    :host(.screen-md[no-spacing]) ::content > [offset-md='3'][offset-md='3'] {
+      margin-left: calc(3 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [offset='4'],
+    :host(.screen-md) ::content > [offset-md='4'][offset-md='4'] {
+      margin-left: calc(4 / var(--grid-md-columns) * 100% + var(--grid-md-gutter)/2);
+    }
+    :host(.screen-md[no-spacing]) ::content > [offset='4'],
+    :host(.screen-md[no-spacing]) ::content > [offset-md='4'][offset-md='4'] {
+      margin-left: calc(4 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [offset='5'],
+    :host(.screen-md) ::content > [offset-md='5'][offset-md='5'] {
+      margin-left: calc(5 / var(--grid-md-columns) * 100% + var(--grid-md-gutter)/2);
+    }
+    :host(.screen-md[no-spacing]) ::content > [offset='5'],
+    :host(.screen-md[no-spacing]) ::content > [offset-md='5'][offset-md='5'] {
+      margin-left: calc(5 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [offset='6'],
+    :host(.screen-md) ::content > [offset-md='6'][offset-md='6'] {
+      margin-left: calc(6 / var(--grid-md-columns) * 100% + var(--grid-md-gutter)/2);
+    }
+    :host(.screen-md[no-spacing]) ::content > [offset='6'],
+    :host(.screen-md[no-spacing]) ::content > [offset-md='6'][offset-md='6'] {
+      margin-left: calc(6 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [offset='7'],
+    :host(.screen-md) ::content > [offset-md='7'][offset-md='7'] {
+      margin-left: calc(7 / var(--grid-md-columns) * 100% + var(--grid-md-gutter)/2);
+    }
+    :host(.screen-md[no-spacing]) ::content > [offset='7'],
+    :host(.screen-md[no-spacing]) ::content > [offset-md='7'][offset-md='7'] {
+      margin-left: calc(7 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [offset='8'],
+    :host(.screen-md) ::content > [offset-md='8'][offset-md='8'] {
+      margin-left: calc(8 / var(--grid-md-columns) * 100% + var(--grid-md-gutter)/2);
+    }
+    :host(.screen-md[no-spacing]) ::content > [offset='8'],
+    :host(.screen-md[no-spacing]) ::content > [offset-md='8'][offset-md='8'] {
+      margin-left: calc(8 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [offset='9'],
+    :host(.screen-md) ::content > [offset-md='9'][offset-md='9'] {
+      margin-left: calc(9 / var(--grid-md-columns) * 100% + var(--grid-md-gutter)/2);
+    }
+    :host(.screen-md[no-spacing]) ::content > [offset='9'],
+    :host(.screen-md[no-spacing]) ::content > [offset-md='9'][offset-md='9'] {
+      margin-left: calc(9 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [offset='10'],
+    :host(.screen-md) ::content > [offset-md='10'][offset-md='10'] {
+      margin-left: calc(10 / var(--grid-md-columns) * 100% + var(--grid-md-gutter)/2);
+    }
+    :host(.screen-md[no-spacing]) ::content > [offset='10'],
+    :host(.screen-md[no-spacing]) ::content > [offset-md='10'][offset-md='10'] {
+      margin-left: calc(10 / var(--grid-md-columns) * 100%);
+    }
+    :host(.screen-md) ::content > [offset='11'],
+    :host(.screen-md) ::content > [offset-md='11'][offset-md='11'] {
+      margin-left: calc(11 / var(--grid-md-columns) * 100% + var(--grid-md-gutter)/2);
+    }
+    :host(.screen-md[no-spacing]) ::content > [offset='11'],
+    :host(.screen-md[no-spacing]) ::content > [offset-md='11'][offset-md='11'] {
+      margin-left: calc(11 / var(--grid-md-columns) * 100%);
+    }
+
+    :host(.screen-md) ::content > [offset='12'],
+    :host(.screen-md) ::content > [offset-md='12'][offset-md='12'],
+    :host(.screen-md) ::content > [offset='13'],
+    :host(.screen-md) ::content > [offset-md='13'][offset-md='13'],
+    :host(.screen-md) ::content > [offset='14'],
+    :host(.screen-md) ::content > [offset-md='14'][offset-md='14'],
+    :host(.screen-md) ::content > [offset='15'],
+    :host(.screen-md) ::content > [offset-md='15'][offset-md='15'],
+    :host(.screen-md) ::content > [offset='16'],
+    :host(.screen-md) ::content > [offset-md='16'][offset-md='16'] {
+      margin-left: calc(11 / var(--grid-md-columns) * 100% + var(--grid-md-gutter)/2);
+    }
+
+    :host(.screen-md[no-spacing]) ::content > [offset='12'],
+    :host(.screen-md[no-spacing]) ::content > [offset-md='12'][offset-md='12'],
+    :host(.screen-md[no-spacing]) ::content > [offset='13'],
+    :host(.screen-md[no-spacing]) ::content > [offset-md='13'][offset-md='13'],
+    :host(.screen-md[no-spacing]) ::content > [offset='14'],
+    :host(.screen-md[no-spacing]) ::content > [offset-md='14'][offset-md='14'],
+    :host(.screen-md[no-spacing]) ::content > [offset='15'],
+    :host(.screen-md[no-spacing]) ::content > [offset-md='15'][offset-md='15'],
+    :host(.screen-md[no-spacing]) ::content > [offset='16'],
+    :host(.screen-md[no-spacing]) ::content > [offset-md='16'][offset-md='16'] {
+      margin-left: calc(11 / var(--grid-md-columns) * 100%);
     }
 
     /* Large devices, Desktops */
@@ -921,6 +1223,135 @@ The following attributes are available for styling the `lavu-cell` element:
     :host(.screen-lg[no-spacing]) ::content > [span='16'],
     :host(.screen-lg[no-spacing]) ::content > [span-lg='16'][span-lg='16'] {
       width: calc(16 / var(--grid-lg-columns) * 100%);
+    }
+
+    :host(.screen-lg) ::content > [offset='1'],
+    :host(.screen-lg) ::content > [offset-lg='1'][offset-lg='1'] {
+      margin-left: calc(1 / var(--grid-lg-columns) * 100% + var(--grid-lg-gutter)/2);
+    }
+    :host(.screen-lg[no-spacing]) ::content > [offset='1'],
+    :host(.screen-lg[no-spacing]) ::content > [offset-lg='1'][offset-lg='1'] {
+      margin-left: calc(1 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [offset='2'],
+    :host(.screen-lg) ::content > [offset-lg='2'][offset-lg='2'] {
+      margin-left: calc(2 / var(--grid-lg-columns) * 100% + var(--grid-lg-gutter)/2);
+    }
+    :host(.screen-lg[no-spacing]) ::content > [offset='2'],
+    :host(.screen-lg[no-spacing]) ::content > [offset-lg='2'][offset-lg='2'] {
+      margin-left: calc(2 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [offset='3'],
+    :host(.screen-lg) ::content > [offset-lg='3'][offset-lg='3'] {
+      margin-left: calc(3 / var(--grid-lg-columns) * 100% + var(--grid-lg-gutter)/2);
+    }
+    :host(.screen-lg[no-spacing]) ::content > [offset='3'],
+    :host(.screen-lg[no-spacing]) ::content > [offset-lg='3'][offset-lg='3'] {
+      margin-left: calc(3 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [offset='4'],
+    :host(.screen-lg) ::content > [offset-lg='4'][offset-lg='4'] {
+      margin-left: calc(4 / var(--grid-lg-columns) * 100% + var(--grid-lg-gutter)/2);
+    }
+    :host(.screen-lg[no-spacing]) ::content > [offset='4'],
+    :host(.screen-lg[no-spacing]) ::content > [offset-lg='4'][offset-lg='4'] {
+      margin-left: calc(4 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [offset='5'],
+    :host(.screen-lg) ::content > [offset-lg='5'][offset-lg='5'] {
+      margin-left: calc(5 / var(--grid-lg-columns) * 100% + var(--grid-lg-gutter)/2);
+    }
+    :host(.screen-lg[no-spacing]) ::content > [offset='5'],
+    :host(.screen-lg[no-spacing]) ::content > [offset-lg='5'][offset-lg='5'] {
+      margin-left: calc(5 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [offset='6'],
+    :host(.screen-lg) ::content > [offset-lg='6'][offset-lg='6'] {
+      margin-left: calc(6 / var(--grid-lg-columns) * 100% + var(--grid-lg-gutter)/2);
+    }
+    :host(.screen-lg[no-spacing]) ::content > [offset='6'],
+    :host(.screen-lg[no-spacing]) ::content > [offset-lg='6'][offset-lg='6'] {
+      margin-left: calc(6 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [offset='7'],
+    :host(.screen-lg) ::content > [offset-lg='7'][offset-lg='7'] {
+      margin-left: calc(7 / var(--grid-lg-columns) * 100% + var(--grid-lg-gutter)/2);
+    }
+    :host(.screen-lg[no-spacing]) ::content > [offset='7'],
+    :host(.screen-lg[no-spacing]) ::content > [offset-lg='7'][offset-lg='7'] {
+      margin-left: calc(7 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [offset='8'],
+    :host(.screen-lg) ::content > [offset-lg='8'][offset-lg='8'] {
+      margin-left: calc(8 / var(--grid-lg-columns) * 100% + var(--grid-lg-gutter)/2);
+    }
+    :host(.screen-lg[no-spacing]) ::content > [offset='8'],
+    :host(.screen-lg[no-spacing]) ::content > [offset-lg='8'][offset-lg='8'] {
+      margin-left: calc(8 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [offset='9'],
+    :host(.screen-lg) ::content > [offset-lg='9'][offset-lg='9'] {
+      margin-left: calc(9 / var(--grid-lg-columns) * 100% + var(--grid-lg-gutter)/2);
+    }
+    :host(.screen-lg[no-spacing]) ::content > [offset='9'],
+    :host(.screen-lg[no-spacing]) ::content > [offset-lg='9'][offset-lg='9'] {
+      margin-left: calc(9 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [offset='10'],
+    :host(.screen-lg) ::content > [offset-lg='10'][offset-lg='10'] {
+      margin-left: calc(10 / var(--grid-lg-columns) * 100% + var(--grid-lg-gutter)/2);
+    }
+    :host(.screen-lg[no-spacing]) ::content > [offset='10'],
+    :host(.screen-lg[no-spacing]) ::content > [offset-lg='10'][offset-lg='10'] {
+      margin-left: calc(10 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [offset='11'],
+    :host(.screen-lg) ::content > [offset-lg='11'][offset-lg='11'] {
+      margin-left: calc(11 / var(--grid-lg-columns) * 100% + var(--grid-lg-gutter)/2);
+    }
+    :host(.screen-lg[no-spacing]) ::content > [offset='11'],
+    :host(.screen-lg[no-spacing]) ::content > [offset-lg='11'][offset-lg='11'] {
+      margin-left: calc(11 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [offset='12'],
+    :host(.screen-lg) ::content > [offset-lg='12'][offset-lg='12'] {
+      margin-left: calc(12 / var(--grid-lg-columns) * 100% + var(--grid-lg-gutter)/2);
+    }
+    :host(.screen-lg[no-spacing]) ::content > [offset='12'],
+    :host(.screen-lg[no-spacing]) ::content > [offset-lg='12'][offset-lg='12'] {
+      margin-left: calc(12 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [offset='13'],
+    :host(.screen-lg) ::content > [offset-lg='13'][offset-lg='13'] {
+      margin-left: calc(13 / var(--grid-lg-columns) * 100% + var(--grid-lg-gutter)/2);
+    }
+    :host(.screen-lg[no-spacing]) ::content > [offset='13'],
+    :host(.screen-lg[no-spacing]) ::content > [offset-lg='13'][offset-lg='13'] {
+      margin-left: calc(13 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [offset='14'],
+    :host(.screen-lg) ::content > [offset-lg='14'][offset-lg='14'] {
+      margin-left: calc(14 / var(--grid-lg-columns) * 100% + var(--grid-lg-gutter)/2);
+    }
+    :host(.screen-lg[no-spacing]) ::content > [offset='14'],
+    :host(.screen-lg[no-spacing]) ::content > [offset-lg='14'][offset-lg='14'] {
+      margin-left: calc(14 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [offset='15'],
+    :host(.screen-lg) ::content > [offset-lg='15'][offset-lg='15'] {
+      margin-left: calc(15 / var(--grid-lg-columns) * 100% + var(--grid-lg-gutter)/2);
+    }
+    :host(.screen-lg[no-spacing]) ::content > [offset='15'],
+    :host(.screen-lg[no-spacing]) ::content > [offset-lg='15'][offset-lg='15'] {
+      margin-left: calc(15 / var(--grid-lg-columns) * 100%);
+    }
+    :host(.screen-lg) ::content > [offset='16'],
+    :host(.screen-lg) ::content > [offset-lg='16'][offset-lg='16'] {
+      margin-left: calc(15 / var(--grid-lg-columns) * 100% + var(--grid-lg-gutter)/2);
+    }
+    :host(.screen-lg[no-spacing]) ::content > [offset='16'],
+    :host(.screen-lg[no-spacing]) ::content > [offset-lg='16'][offset-lg='16'] {
+      margin-left: calc(15 / var(--grid-lg-columns) * 100%);
     }
   </style>
   <template>
