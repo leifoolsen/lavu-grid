@@ -141,7 +141,7 @@ The following attributes are available for styling the `lavu-grid` element:
 `no-spacing`  | Modifies the grid and cells to have no gutter or margin | Optional on grid container
 
 
-## Attributes for lavu-cell - or element with role="cell"
+## Attributes for lavu-cell - or any element with role="cell"
 
 The following attributes are available for styling the `lavu-cell` element:
 
@@ -1374,15 +1374,11 @@ The following attributes are available for styling the `lavu-cell` element:
        * Fired when the media query changes.
        *
        * @event media-query-changed
+       * @detail {{screenClass: String}} one of `screen-xs`, `screen-sm`, `screen-md` or `screen-lg`
+       * @detail {{mediaQuery: String}} the media query that matches the `screenClass`
        */
 
       properties: {
-
-        /**
-         * Modifies the grid and cells to have no gutter or margin and spacing.
-         * @attribute noSpacing
-         */
-
 
         /**
          * The CSS media queries to evaluate.
@@ -1485,7 +1481,7 @@ The following attributes are available for styling the `lavu-cell` element:
 <!--
 # lavu-cell
 
-The cells in the `lavu-grid` component.
+Represents the cells in the `lavu-grid` component.
 -->
 
 <dom-module id="lavu-cell">
