@@ -236,8 +236,8 @@ The following attributes are available for styling the `lavu-cell` element:
       padding: 0 !important;  /* TODO: How to avoid !important ?? */
     }
 
-    :host ::content > lavu-cell,
-    :host ::content > [role='cell'] {
+    :host ::content lavu-cell,
+    :host ::content [role='cell'] {
       box-sizing: border-box;
     }
     :host ::content [top] {
@@ -1370,14 +1370,6 @@ The following attributes are available for styling the `lavu-cell` element:
     Polymer({
       is: 'lavu-grid',
 
-      /**
-       * Fired when the media query changes.
-       *
-       * @event media-query-changed
-       * @detail {{screenClass: String}} one of `screen-xs`, `screen-sm`, `screen-md` or `screen-lg`
-       * @detail {{mediaQuery: String}} the media query that matches the `screenClass`
-       */
-
       properties: {
 
         /**
@@ -1431,8 +1423,18 @@ The following attributes are available for styling the `lavu-cell` element:
         _screenClass: {
           type: String
         }
-
       },
+
+      // Element Behavior
+      /**
+       * Fired when the media query changes.
+       *
+       * @event media-query-changed
+       * @detail {{screenClass: String}} one of `screen-xs`, `screen-sm`, `screen-md` or `screen-lg`
+       * @detail {{mediaQuery: String}} the media query that matches the `screenClass`
+       */
+
+
 
       observers: [
         '_onQueryMatchesChanged(_isXs, _isSm, _isMd, _isLg)'
