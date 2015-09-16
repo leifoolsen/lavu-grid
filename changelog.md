@@ -1,7 +1,8 @@
 # Change Log
 
 ## 0.0.5 -
-- Update doc
+- Moved style tag inside the template tag, as recommended by Polymer 1.1
+- Updated doc
 
 ## 0.0.4 - 2015-09-13
 - Added offset attribute to control offset of cells appearing in the lavu-grid container
