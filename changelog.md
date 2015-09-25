@@ -1,6 +1,8 @@
 # Change Log
 
 ## 0.0.5 -
+- Changed group name to lavu-layout
+- Fixed inline style error in README.md
 - Moved style tag inside the template tag, as recommended by Polymer 1.1
 - Updated doc
 
