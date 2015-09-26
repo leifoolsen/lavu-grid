@@ -1,5 +1,7 @@
 # Change Log
 
+## 0.0.6 - 
+
 ## 0.0.5 - 2015-09-26
 - Changed group name to lavu-layout
 - Fixed inline style error in README.md
